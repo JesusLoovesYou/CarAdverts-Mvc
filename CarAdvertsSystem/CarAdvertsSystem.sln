@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarAdvertsSystem.Integratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarAdvertsSystem.UnitTests", "CarAdvertsSystem.UnitTests\CarAdvertsSystem.UnitTests.csproj", "{C5747BC0-CAD2-4492-8BD4-E4299128A46B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D3F4C714-572D-4A4F-BE18-9BD4BCE76E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarAdverts.Common", "CarAdverts.Common\CarAdverts.Common.csproj", "{C116A0DA-7D57-496B-A0E0-22C07F937A93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{C5747BC0-CAD2-4492-8BD4-E4299128A46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5747BC0-CAD2-4492-8BD4-E4299128A46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5747BC0-CAD2-4492-8BD4-E4299128A46B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C116A0DA-7D57-496B-A0E0-22C07F937A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C116A0DA-7D57-496B-A0E0-22C07F937A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C116A0DA-7D57-496B-A0E0-22C07F937A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C116A0DA-7D57-496B-A0E0-22C07F937A93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +71,6 @@ Global
 		{75A71E33-787B-4FC3-82FC-2C5BE0776885} = {C86EC743-7AAD-4E6A-B9F4-9C8AFA0F6547}
 		{E053CF76-E828-416D-BE3C-1710233E7116} = {A164275D-E033-4669-B807-9E79EDDAAF49}
 		{C5747BC0-CAD2-4492-8BD4-E4299128A46B} = {75A71E33-787B-4FC3-82FC-2C5BE0776885}
+		{C116A0DA-7D57-496B-A0E0-22C07F937A93} = {D3F4C714-572D-4A4F-BE18-9BD4BCE76E29}
 	EndGlobalSection
 EndGlobal

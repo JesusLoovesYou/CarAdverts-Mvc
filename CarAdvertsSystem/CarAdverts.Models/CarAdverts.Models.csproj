@@ -57,13 +57,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advert.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Contracts\IAdvert.cs" />
+    <Compile Include="Contracts\ICategory.cs" />
+    <Compile Include="Contracts\ICity.cs" />
+    <Compile Include="Contracts\IManufacturer.cs" />
+    <Compile Include="Contracts\IPicture.cs" />
+    <Compile Include="Contracts\IVehicleModel.cs" />
+    <Compile Include="Manufacturer.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
+      <Project>{C116A0DA-7D57-496B-A0E0-22C07F937A93}</Project>
+      <Name>CarAdverts.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

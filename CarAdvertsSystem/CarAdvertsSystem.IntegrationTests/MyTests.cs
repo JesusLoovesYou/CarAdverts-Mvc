@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 
-namespace CarAdvertsSystem.UnitTests
+namespace CarAdvertsSystem.IntegrationTests
 {
     [TestFixture]
     public class MyTests
     {
         [Test]
-        public void MyTestMethod()
+        public static void MyTestMethod()
         {
             Assert.IsTrue(true);
         }
