@@ -63,6 +63,7 @@
     <Compile Include="Contracts\IAdvert.cs" />
     <Compile Include="Contracts\ICategory.cs" />
     <Compile Include="Contracts\ICity.cs" />
+    <Compile Include="Contracts\IDbModel.cs" />
     <Compile Include="Contracts\IManufacturer.cs" />
     <Compile Include="Contracts\IPicture.cs" />
     <Compile Include="Contracts\IVehicleModel.cs" />
@@ -80,6 +81,10 @@
     <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
       <Project>{C116A0DA-7D57-496B-A0E0-22C07F937A93}</Project>
       <Name>CarAdverts.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarAdverts.Contracts\CarAdverts.Contracts.csproj">
+      <Project>{b4dfbe9a-1622-4ab2-b587-7ed2539729d8}</Project>
+      <Name>CarAdverts.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

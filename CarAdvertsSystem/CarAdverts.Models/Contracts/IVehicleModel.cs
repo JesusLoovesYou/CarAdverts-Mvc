@@ -2,14 +2,16 @@
 
 namespace CarAdverts.Models.Contracts
 {
-    public interface IVehicleModel
+    public interface IVehicleModel : IDbModel
     {
-        ICollection<Advert> Adverts { get; set; }
-        Category Category { get; set; }
-        int CategoryId { get; set; }
-        int Id { get; set; }
-        Manufacturer Manufacturer { get; set; }
-        int ManufacturerId { get; set; }
         string Name { get; set; }
+
+        ICollection<Advert> Adverts { get; set; }
+
+        int CategoryId { get; set; }
+        Category Category { get; set; }
+
+        int ManufacturerId { get; set; }
+        Manufacturer Manufacturer { get; set; }
     }
 }

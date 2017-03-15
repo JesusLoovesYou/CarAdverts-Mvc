@@ -2,10 +2,10 @@
 
 namespace CarAdverts.Models.Contracts
 {
-    public interface ICategory
+    public interface ICategory : IDbModel
     {
-        int Id { get; set; }
-        ICollection<VehicleModel> VethicleModels { get; set; }
         string Name { get; set; }
+
+        ICollection<VehicleModel> VethicleModels { get; set; }
     }
 }

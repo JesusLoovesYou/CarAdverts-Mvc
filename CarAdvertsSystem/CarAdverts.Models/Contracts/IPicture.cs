@@ -1,10 +1,11 @@
 ﻿namespace CarAdverts.Models.Contracts
 {
-    public interface IPicture
+    public interface IPicture : IDbModel
     {
-        Advert Advert { get; set; }
-        int AdvertId { get; set; }
-        int Id { get; set; }
         string Name { get; set; }
+
+        Advert Advert { get; set; }
+
+        int AdvertId { get; set; }
     }
 }

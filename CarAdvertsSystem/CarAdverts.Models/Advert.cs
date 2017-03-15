@@ -1,4 +1,5 @@
 ﻿using CarAdverts.Common.Constants;
+using CarAdverts.Data.Contracts;
 using CarAdverts.Models.Contracts;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarAdverts.Models
 {
-    public class Advert : IAdvert
+    public class Advert : DeletableEntity, IAdvert
     {
         private ICollection<Picture> pictures;
 

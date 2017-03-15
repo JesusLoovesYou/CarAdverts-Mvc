@@ -69,6 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTests\Mocks\MockDbModel.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_AddShould.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_ConstructorShould.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_GetByIdShould.cs" />
     <Compile Include="ModelsTests\AdvertTests.cs" />
     <Compile Include="ModelsTests\CategoryTests.cs" />
     <Compile Include="ModelsTests\CityTests.cs" />
@@ -89,13 +93,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ControlersTests\" />
-    <Folder Include="DataTests\" />
+    <Folder Include="DataTests\RepositoriesTests\DeleatableEntityRepositoryTests\" />
     <Folder Include="ServicesTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
       <Project>{C116A0DA-7D57-496B-A0E0-22C07F937A93}</Project>
       <Name>CarAdverts.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarAdverts.Data\CarAdverts.Data.csproj">
+      <Project>{3D8E9022-3E1C-40D0-9029-A6AFA1DA0D3C}</Project>
+      <Name>CarAdverts.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarAdverts.Models\CarAdverts.Models.csproj">
       <Project>{1E9188DF-EA3A-4A97-BEB6-F4495F425754}</Project>

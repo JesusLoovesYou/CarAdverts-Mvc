@@ -2,9 +2,8 @@
 
 namespace CarAdverts.Models.Contracts
 {
-    public interface IManufacturer
+    public interface IManufacturer : IDbModel
     {
-        int Id { get; set; }
         ICollection<VehicleModel> Models { get; set; }
         string Name { get; set; }
     }
