@@ -1,6 +1,7 @@
-﻿using CarAdverts.Data.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using CarAdverts.Data.Contracts;
 using CarAdverts.Models;
 using CarAdverts.Data.Repositories.Base;
 using CarAdverts.Data.Repositories.Contracts;
