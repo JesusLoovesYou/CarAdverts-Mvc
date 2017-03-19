@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 
-namespace CarAdverts.Data.Repositories.Contracts
+namespace CarAdverts.Data.Repositories.EfRepository.Contracts
 {
-    public interface IDeletableEntityRepository<T> : IEfRepository<T>
+    public interface IEfDeletableRepository<T> : IEfGenericRepository<T>
         where T : class
     {
         IQueryable<T> AllWithDeleted();

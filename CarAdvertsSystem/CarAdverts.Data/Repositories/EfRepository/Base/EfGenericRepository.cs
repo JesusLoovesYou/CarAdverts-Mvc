@@ -1,47 +1,54 @@
-﻿using CarAdverts.Data.Contracts;
-using System.Linq;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using CarAdverts.Data.Repositories.Contracts;
-using Bytes2you.Validation;
-using CarAdverts.Models.Contracts;
+using System.Linq;
+using CarAdverts.Data.Contracts;
+using CarAdverts.Data.Repositories.EfRepository.Contracts;
 
-namespace CarAdverts.Data.Repositories.Base
+namespace CarAdverts.Data.Repositories.EfRepository.Base
 {
-    public class EfGenericRepository<T> : IEfRepository<T>
-        where T : class, IDbModel
+    public class EfGenericRepository<T> : IEfGenericRepository<T> where T : class
     {
         public EfGenericRepository(ICarAdvertsSystemDbContext context)
         {
-            Guard.WhenArgument(context, nameof(ICarAdvertsSystemDbContext)).IsNull().Throw();
+            if (context == null)
+            {
+                throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
+            }
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
 
-
         protected IDbSet<T> DbSet { get; set; }
 
-        public ICarAdvertsSystemDbContext Context { get; set; }
+        protected ICarAdvertsSystemDbContext Context { get; set; }
 
         public virtual IQueryable<T> All()
         {
-            return this.DbSet.AsQueryable();
+            var result = this.DbSet.AsQueryable();
+            return result;
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
-            return this.DbSet.FirstOrDefault(e => e.Id == id);
+            return this.DbSet.Find(id);
         }
-        
-        public void Add(T entity)
+
+        public virtual void Add(T entity)
         {
-            Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
-
-            this.DbSet.Add(entity);
+            DbEntityEntry entry = this.Context.Entry(entity);
+            if (entry.State != EntityState.Detached)
+            {
+                entry.State = EntityState.Added;
+            }
+            else
+            {
+                this.DbSet.Add(entity);
+            }
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State == EntityState.Detached)
@@ -51,7 +58,7 @@ namespace CarAdverts.Data.Repositories.Base
 
             entry.State = EntityState.Modified;
         }
-        
+
         public virtual void Delete(T entity)
         {
             DbEntityEntry entry = this.Context.Entry(entity);
@@ -75,14 +82,19 @@ namespace CarAdverts.Data.Repositories.Base
                 this.Delete(entity);
             }
         }
-        
-        public void Detach(T entity)
+
+        public virtual void Detach(T entity)
         {
             DbEntityEntry entry = this.Context.Entry(entity);
 
             entry.State = EntityState.Detached;
         }
-        
+
+        public int SaveChanges()
+        {
+            return this.Context.SaveChanges();
+        }
+
         public void Dispose()
         {
             this.Context.Dispose();

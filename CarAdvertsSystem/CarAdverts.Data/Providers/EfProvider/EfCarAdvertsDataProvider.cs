@@ -1,38 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using CarAdverts.Data.Contracts;
+using CarAdverts.Data.Repositories.EfRepository.Base;
+using CarAdverts.Data.Repositories.EfRepository.Contracts;
 using CarAdverts.Models;
-using CarAdverts.Data.Repositories.Base;
-using CarAdverts.Data.Repositories.Contracts;
 using CarAdverts.Models.Contracts;
 
-namespace CarAdverts.Data
+namespace CarAdverts.Data.Providers.EfProvider
 {
-    public class CarAdvertsDataEfProvider : ICarAdvertsDataEfProvider
+    public class EfCarAdvertsDataProvider : IEfCarAdvertsDataProvider
     {
         private readonly ICarAdvertsSystemDbContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public CarAdvertsDataEfProvider(ICarAdvertsSystemDbContext context)
+        public EfCarAdvertsDataProvider(ICarAdvertsSystemDbContext context)
         {
             this.context = context;
         }
 
-        public IDeletableEntityRepository<Advert> Adverts => this.GetDeletableEntityRepository<Advert>();
+        public IEfDeletableRepository<Advert> Adverts => this.GetDeletableEntityRepository<Advert>();
         
-        public IEfRepository<Manufacturer> Manufacturers => this.GetRepository<Manufacturer>();
+        public IEfGenericRepository<Manufacturer> Manufacturers => this.GetRepository<Manufacturer>();
 
-        public IEfRepository<VehicleModel> VehicleModels => this.GetRepository<VehicleModel>();
+        public IEfGenericRepository<VehicleModel> VehicleModels => this.GetRepository<VehicleModel>();
 
-        public IEfRepository<Category> Categories => this.GetRepository<Category>();
+        public IEfGenericRepository<Category> Categories => this.GetRepository<Category>();
 
-        public IEfRepository<City> Cities => this.GetRepository<City>();
+        public IEfGenericRepository<City> Cities => this.GetRepository<City>();
 
-        public IEfRepository<Picture> Pictures => this.GetRepository<Picture>();
+        public IEfGenericRepository<Picture> Pictures => this.GetRepository<Picture>();
 
-        public IEfRepository<User> Users => this.GetRepository<User>();
+        public IEfGenericRepository<User> Users => this.GetRepository<User>();
 
         public ICarAdvertsSystemDbContext Context => this.context;
         
@@ -55,7 +54,7 @@ namespace CarAdverts.Data
         }
 
         // I dont like this method.
-        private IEfRepository<T> GetRepository<T>()
+        private IEfGenericRepository<T> GetRepository<T>()
             where T : class
         {
             //if (!this.repositories.ContainsKey(typeof(T)))
@@ -70,19 +69,19 @@ namespace CarAdverts.Data
             //    this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
             //}
 
-            return (IEfRepository<T>)this.repositories[typeof(T)];
+            return (IEfGenericRepository<T>)this.repositories[typeof(T)];
         }
 
-        private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>()
+        private IEfDeletableRepository<T> GetDeletableEntityRepository<T>()
            where T : class, IDbModel, IDeletableEntity, new()
         {
             if (!this.repositories.ContainsKey(typeof(T)))
             {
-                var type = typeof(DeletableEntityRepository<T>);
+                var type = typeof(EfDeletableRepository<T>);
                 this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
             }
 
-            return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
+            return (IEfDeletableRepository<T>)this.repositories[typeof(T)];
         }
     }
 }

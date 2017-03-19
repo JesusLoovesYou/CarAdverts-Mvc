@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 
-namespace CarAdverts.Data.Repositories.Contracts
+namespace CarAdverts.Data.Repositories.EfRepository.Contracts
 {
-    public interface IEfRepository<T>
+    public interface IEfGenericRepository<T>
         where T : class
     {
         IQueryable<T> All();

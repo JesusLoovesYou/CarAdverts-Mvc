@@ -1,0 +1,49 @@
+﻿@model CarAdverts.Web.Models.Advert.PageableAdvertsListViewModel
+@{
+    ViewBag.Title = "Adverts list";
+}
+
+<h1>@ViewBag.Title</h1>
+<div class="container">
+    @foreach (var advert in Model.Adverts)
+    {
+        <div class="col-md-10">
+            <div class="row">
+                <h4>
+                    <a href="@advert.Url">@advert.Title</a>
+                </h4>
+            </div>
+        </div>
+    }
+
+    <nav>
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li>
+                    <a href="/Advert/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var className = string.Empty;
+                if (Model.CurrentPage == i)
+                {
+                    className = "active";
+                }
+
+                <li class="@className"><a href="/Advert/Index/@i">@i</a></li>
+            }
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li>
+                    <a href="/Advert/Index/@(Model.CurrentPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

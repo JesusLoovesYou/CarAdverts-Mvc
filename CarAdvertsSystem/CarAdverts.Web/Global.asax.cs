@@ -1,4 +1,4 @@
-﻿using CarAdverts.Web.App_Start;
+﻿using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -13,7 +13,9 @@ namespace CarAdverts.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            MappingConfig.RegisterMaps();
+
+            DbConfig.Initialize();
+            AutoMapperConfig.Config(Assembly.GetExecutingAssembly());
         }
     }
 }
