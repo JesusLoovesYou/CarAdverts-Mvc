@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTests\ContexTestst\CarAdvertsSystemDbContext_ConstuktorShould.cs" />
+    <Compile Include="DataTests\MigrationsTests\Configuratio_ConstuctorShould.cs" />
     <Compile Include="DataTests\Mocks\MockDbModel.cs" />
     <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_ConstructorShould.cs" />
     <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_DisposedWithoutParameters_Should.cs" />

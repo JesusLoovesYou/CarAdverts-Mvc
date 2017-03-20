@@ -14,6 +14,9 @@ namespace CarAdverts.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
+
             DbConfig.Initialize();
             AutoMapperConfig.Config(Assembly.GetExecutingAssembly());
         }

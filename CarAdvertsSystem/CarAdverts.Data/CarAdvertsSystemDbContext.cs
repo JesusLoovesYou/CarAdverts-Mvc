@@ -23,6 +23,8 @@ namespace CarAdverts.Data
 
         public virtual IDbSet<VehicleModel> VehicleModels { get; set; }
 
+        public virtual IDbSet<File> Files { get; set; }
+
         public new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();

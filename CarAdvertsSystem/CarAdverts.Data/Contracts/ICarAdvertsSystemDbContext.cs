@@ -9,6 +9,18 @@ namespace CarAdverts.Data.Contracts
     {
         int SaveChanges();
 
+        IDbSet<Advert> Adverts { get; set; }
+
+        IDbSet<City> Cities { get; set; }
+
+        IDbSet<Category> Categories { get; set; }
+
+        IDbSet<Manufacturer> Manufacturers { get; set; }
+
+        IDbSet<VehicleModel> VehicleModels { get; set; }
+
+        IDbSet<File> Files { get; set; }
+
         IDbSet<User> Users { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
