@@ -7,7 +7,7 @@ namespace CarAdverts.Data.Repositories.EfRepository.Contracts
     {
         IQueryable<T> All();
 
-        T GetById(int id);
+        T GetById(int? id);
 
         void Add(T entity);
         

@@ -1,4 +1,6 @@
-﻿using CarAdverts.Web.AutoMapping;
+﻿using System;
+using System.Collections.Generic;
+using CarAdverts.Web.AutoMapping;
 
 namespace CarAdverts.Web.Models.Advert
 {
@@ -8,6 +10,10 @@ namespace CarAdverts.Web.Models.Advert
 
         public string Title { get; set; }
 
+        public DateTime CreatedOn { get; set; }
+
         public string Url => $"/adverts/{this.Id}/{this.Title.ToLower().Replace(" ", "-")}";
+
+        public IEnumerable<FileViewModel> Pictures { get; set; }
     }
 }

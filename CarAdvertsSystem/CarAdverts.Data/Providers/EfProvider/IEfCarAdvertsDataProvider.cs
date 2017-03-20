@@ -16,7 +16,7 @@ namespace CarAdverts.Data.Providers.EfProvider
 
         IEfGenericRepository<City> Cities { get; }
 
-        IEfGenericRepository<Picture> Pictures { get; }
+        IEfGenericRepository<File> Files { get; }
 
         IEfGenericRepository<User> Users { get; }
 

@@ -5,15 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarAdverts.Models
 {
-    public class Picture : IPicture
+    public class File : IFile
     {
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(ValidationConstants.PictureNameMinLength)]
-        [MaxLength(ValidationConstants.PictureNameMaxLength)]
+        //[StringLength(255)]
         public string Name { get; set; }
+
+        //[StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public FileType FileType { get; set; }
 
         public int AdvertId { get; set; }
 

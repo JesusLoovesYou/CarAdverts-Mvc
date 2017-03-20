@@ -22,7 +22,7 @@ namespace CarAdverts.Models.Contracts
 
         int Year { get; set; }
 
-        ICollection<Picture> Pictures { get; set; }
+        ICollection<File> Pictures { get; set; }
 
         City City { get; set; }
 

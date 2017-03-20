@@ -1,6 +1,32 @@
-﻿@{
+﻿@using CarAdverts.Models
+@model CarAdverts.Web.Models.Advert.AdvertViewModel
+@{
     ViewBag.Title = "Advert detail.";
 }
 
 <h1>@ViewBag.Title</h1>
 
+<div>
+    This is title of our advert: @Model.Title
+</div>
+
+@if (Model.Pictures.Any(p => p.FileType == FileType.Photo))
+{
+    var pictures = Model.Pictures.Where(p => p.FileType == FileType.Photo);
+    foreach (var picture in pictures)
+    {
+        <dt>
+            Picture
+        </dt>
+        <dd>
+            <img class="car-img" src="~/File?id=@picture.Id" alt="picture" />
+        </dd>
+    }
+}
+
+<style>
+    .car-img {
+        width: 100px;
+        height: 100px;
+    }
+</style>

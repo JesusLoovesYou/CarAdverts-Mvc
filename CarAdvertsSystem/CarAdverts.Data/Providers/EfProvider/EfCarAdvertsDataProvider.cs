@@ -29,7 +29,7 @@ namespace CarAdverts.Data.Providers.EfProvider
 
         public IEfGenericRepository<City> Cities => this.GetRepository<City>();
 
-        public IEfGenericRepository<Picture> Pictures => this.GetRepository<Picture>();
+        public IEfGenericRepository<File> Files => this.GetRepository<File>();
 
         public IEfGenericRepository<User> Users => this.GetRepository<User>();
 
@@ -57,17 +57,11 @@ namespace CarAdverts.Data.Providers.EfProvider
         private IEfGenericRepository<T> GetRepository<T>()
             where T : class
         {
-            //if (!this.repositories.ContainsKey(typeof(T)))
-            //{
-            //    var type = typeof(EfGenericRepository<T>);
-
-            //    if (typeof(T).IsAssignableFrom(typeof(Test)))
-            //    {
-            //        type = typeof(TestRepository);
-            //    }
-            
-            //    this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
-            //}
+            if (!this.repositories.ContainsKey(typeof(T)))
+            {
+                var type = typeof(EfGenericRepository<T>);
+                this.repositories.Add(typeof(T), (Activator.CreateInstance(type, this.context)));
+            }
 
             return (IEfGenericRepository<T>)this.repositories[typeof(T)];
         }

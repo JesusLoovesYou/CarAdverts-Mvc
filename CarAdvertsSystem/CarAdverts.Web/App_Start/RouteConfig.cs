@@ -10,9 +10,15 @@ namespace CarAdverts.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Display question",
+                name: "Display advert",
                 url: "adverts/{id}/{url}",
                 defaults: new { controller = "Advert", action = "Detail" });
+
+            routes.MapRoute(
+                name: "Adverts list",
+                url: "adverts/{model}/{id}",
+                defaults: new { controller = "Advert", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

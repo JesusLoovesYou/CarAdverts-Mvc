@@ -9,11 +9,11 @@ namespace CarAdverts.Models
 {
     public class Advert : DeletableEntity, IAdvert
     {
-        private ICollection<Picture> pictures;
+        private ICollection<File> pictures;
 
         public Advert()
         {
-            this.pictures = new HashSet<Picture>();
+            this.pictures = new HashSet<File>();
         }
 
         [Key]
@@ -23,9 +23,7 @@ namespace CarAdverts.Models
         [MinLength(ValidationConstants.AdvertTitleMinLength)]
         [MaxLength(ValidationConstants.AdvertTitleMaxLength)]
         public string Title { get; set; }
-
-        public bool IsDeleted { get; set; }
-
+        
         public int VehicleModelId { get; set; }
 
         [ForeignKey("VehicleModelId")]
@@ -58,7 +56,7 @@ namespace CarAdverts.Models
         [MaxLength(ValidationConstants.AdvertDescriptionMaxLength)]
         public string Description { get; set; }
 
-        public virtual ICollection<Picture> Pictures
+        public virtual ICollection<File> Pictures
         {
             get
             {

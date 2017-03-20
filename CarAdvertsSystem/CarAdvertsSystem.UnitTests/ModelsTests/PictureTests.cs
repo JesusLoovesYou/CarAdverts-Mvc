@@ -15,7 +15,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Id_ShouldHaveKeyAttribute()
         {
             // Arrange
-            var idProperty = typeof(Picture).GetProperty("Id");
+            var idProperty = typeof(File).GetProperty("Id");
 
             // Act
             var keyAttribute = idProperty.GetCustomAttributes(typeof(KeyAttribute), true)
@@ -31,7 +31,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Id_ShouldGetAndSetDataCorrectly(int testId)
         {
             // Arrange and Act
-            var picture = new Picture() { Id = testId };
+            var picture = new File() { Id = testId };
 
             //Assert
             Assert.AreEqual(testId, picture.Id);
@@ -43,7 +43,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldHaveRequiredAttribute()
         {
             // Arrange
-            var nameProperty = typeof(Picture).GetProperty("Name");
+            var nameProperty = typeof(File).GetProperty("Name");
 
             // Act
             var requiredAttribute = nameProperty.GetCustomAttributes(typeof(RequiredAttribute), true)
@@ -58,7 +58,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldHaveCorrectMinLength()
         {
             // Arrange
-            var nameProperty = typeof(Picture).GetProperty("Name");
+            var nameProperty = typeof(File).GetProperty("Name");
 
             // Act
             var minLengthAttribute = nameProperty.GetCustomAttributes(typeof(MinLengthAttribute), false)
@@ -73,7 +73,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldHaveCorrectMaxLength()
         {
             // Arrange
-            var nameProperty = typeof(Picture).GetProperty("Name");
+            var nameProperty = typeof(File).GetProperty("Name");
 
             // Act
             var maxLengthAttribute = nameProperty.GetCustomAttributes(typeof(MaxLengthAttribute), false)
@@ -89,7 +89,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldGetAndSetDataCorrectly(string testName)
         {
             // Arrange and Act
-            var vehicleModel = new Picture() { Name = testName };
+            var vehicleModel = new File() { Name = testName };
 
             //Assert
             Assert.AreEqual(vehicleModel.Name, testName);
@@ -102,7 +102,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void AdvertId_ShouldGetAndSetDataCorrectly(int testAdvertId)
         {
             // Arrange and Act
-            var picture = new Picture() { AdvertId = testAdvertId };
+            var picture = new File() { AdvertId = testAdvertId };
 
             //Assert
             Assert.AreEqual(picture.AdvertId, testAdvertId);
@@ -116,7 +116,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         {
             // Arrange and Act         
             var advert = new Advert() { Title = testAdvertTitle };
-            var picture = new Picture() { Advert = advert };
+            var picture = new File() { Advert = advert };
 
             //Assert
             Assert.AreEqual(picture.Advert.Title, testAdvertTitle);

@@ -30,7 +30,7 @@ namespace CarAdverts.Data.Repositories.EfRepository.Base
             return result;
         }
 
-        public virtual T GetById(int id)
+        public virtual T GetById(int? id)
         {
             return this.DbSet.Find(id);
         }

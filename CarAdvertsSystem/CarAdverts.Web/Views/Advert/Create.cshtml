@@ -5,7 +5,7 @@
 
 <h1>@ViewBag.Title</h1>
 
-@using (Html.BeginForm("Create", "Advert", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "Advert", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -58,6 +58,13 @@
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.Label("Picture", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="file" id="Picture" name="uploadedFiles" multiple="multiple" />
+        </div>
+    </div>
+    
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Send feedback" />
