@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 using CarAdverts.Data.Contracts;
 using CarAdverts.Data.Repositories.EfRepository.Base;
 using CarAdverts.Data.Repositories.EfRepository.Contracts;
@@ -16,6 +17,8 @@ namespace CarAdverts.Data.Providers.EfProvider
 
         public EfCarAdvertsDataProvider(ICarAdvertsSystemDbContext context)
         {
+            Guard.WhenArgument(context, nameof(ICarAdvertsSystemDbContext)).IsNull().Throw();
+            
             this.context = context;
         }
 
@@ -45,7 +48,7 @@ namespace CarAdverts.Data.Providers.EfProvider
             this.Dispose(true);
         }
 
-        protected virtual void Dispose(bool disposing)
+        public virtual void Dispose(bool disposing)
         {
             if (disposing)
             {

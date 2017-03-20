@@ -1,11 +1,11 @@
-﻿using CarAdverts.Common.Constants;
-using CarAdverts.Models;
-using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using CarAdverts.Common.Constants;
+using CarAdverts.Models;
+using NUnit.Framework;
 
-namespace CarAdvertsSystem.UnitTests.ModelsTests
+namespace CarAdvertsSystem.UnitTests.DataTests.ModelsTests
 {
     [TestFixture]
     public class UserTests

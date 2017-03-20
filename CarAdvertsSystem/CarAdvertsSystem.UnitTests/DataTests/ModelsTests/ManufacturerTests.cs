@@ -1,48 +1,48 @@
-﻿using CarAdverts.Common.Constants;
-using CarAdverts.Models;
-using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using CarAdverts.Common.Constants;
+using CarAdverts.Models;
+using NUnit.Framework;
 
-namespace CarAdvertsSystem.UnitTests.ModelsTests
+namespace CarAdvertsSystem.UnitTests.DataTests.ModelsTests
 {
     [TestFixture]
-    public class CitiesTests
+    public class ManufacturerTests
     {
-        // ---- Tests for constructur + adverts
+        // ----- Tests for constuctur
 
         [Test]
         public void Constructor_ShouldHaveParameterlessConstructor()
         {
             // Arrange and Act
-            var city = new City();
+            var manufacturer = new Manufacturer();
 
             // Assert
-            Assert.IsInstanceOf<City>(city);
+            Assert.IsInstanceOf<Manufacturer>(manufacturer);
         }
 
         [Test]
-        public void Constructor_ShouldInitializeAdvertCollectionCorrectly()
+        public void Constructor_ShouldInitializeVehicleModelCollectionCorrectly()
         {
             // Arrange
-            var city = new City();
+            var manufacturer = new Manufacturer();
 
             // Act
-            var advert = city.Adverts;
+            var vehicleModel = manufacturer.Models;
 
             // Assert
-            Assert.That(advert, Is.Not.Null.And.InstanceOf<HashSet<Advert>>());
+            Assert.That(vehicleModel, Is.Not.Null.And.InstanceOf<HashSet<VehicleModel>>());
         }
 
-        // ---- Tests for Id property
+        // ----- Tests for Id property
 
         [Test]
         public void Id_ShouldHaveKeyAttribute()
         {
             // Arrange
-            var idProperty = typeof(City).GetProperty("Id");
+            var idProperty = typeof(Manufacturer).GetProperty("Id");
 
             // Act
             var keyAttribute = idProperty.GetCustomAttributes(typeof(KeyAttribute), true)
@@ -58,19 +58,19 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Id_ShouldGetAndSetDataCorrectly(int testId)
         {
             // Arrange and Act
-            var city = new City() { Id = testId };
+            var manufacturer = new Manufacturer { Id = testId };
 
-            // Assert
-            Assert.AreEqual(testId, city.Id);
+            //Assert
+            Assert.AreEqual(testId, manufacturer.Id);
         }
 
-        // ---- Tests for Name propery
+        // Tests for Name property
 
         [Test]
         public void Name_ShouldHaveRequiredAttribute()
         {
             // Arrange
-            var nameProperty = typeof(City).GetProperty("Name");
+            var nameProperty = typeof(Manufacturer).GetProperty("Name");
 
             // Act
             var requiredAttribute = nameProperty.GetCustomAttributes(typeof(RequiredAttribute), true)
@@ -85,7 +85,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldHaveUniqueAttribute()
         {
             // Arrange
-            var nameProperty = typeof(City).GetProperty("Name");
+            var nameProperty = typeof(Manufacturer).GetProperty("Name");
 
             // Act
             var indexAttribute = nameProperty.GetCustomAttributes(typeof(IndexAttribute), true)
@@ -93,7 +93,6 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
                 .FirstOrDefault();
 
             // Assert
-            Assert.That(indexAttribute, Is.Not.Null);
             Assert.That(indexAttribute.IsUnique, Is.True);
         }
 
@@ -101,7 +100,7 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
         public void Name_ShouldHaveCorrectMinLength()
         {
             // Arrange
-            var nameProperty = typeof(City).GetProperty("Name");
+            var nameProperty = typeof(Manufacturer).GetProperty("Name");
 
             // Act
             var minLengthAttribute = nameProperty.GetCustomAttributes(typeof(MinLengthAttribute), false)
@@ -109,14 +108,14 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
                 .FirstOrDefault();
 
             // Assert
-            Assert.That(minLengthAttribute.Length, Is.Not.Null.And.EqualTo(ValidationConstants.CityNameMinLength));
+            Assert.That(minLengthAttribute.Length, Is.Not.Null.And.EqualTo(ValidationConstants.ManufacturerNameMinLength));
         }
 
         [Test]
         public void Name_ShouldHaveCorrectMaxLength()
         {
             // Arrange
-            var nameProperty = typeof(City).GetProperty("Name");
+            var nameProperty = typeof(Manufacturer).GetProperty("Name");
 
             // Act
             var maxLengthAttribute = nameProperty.GetCustomAttributes(typeof(MaxLengthAttribute), false)
@@ -124,35 +123,35 @@ namespace CarAdvertsSystem.UnitTests.ModelsTests
                 .FirstOrDefault();
 
             // Assert
-            Assert.That(maxLengthAttribute.Length, Is.Not.Null.And.EqualTo(ValidationConstants.CityNameMaxLength));
+            Assert.That(maxLengthAttribute.Length, Is.Not.Null.And.EqualTo(ValidationConstants.ManufacturerNameMaxLength));
         }
 
-        [TestCase("Sofia")]
-        [TestCase("Varna")]
+        [TestCase("Audi")]
+        [TestCase("BMV")]
         public void Name_ShouldGetAndSetDataCorrectly(string testName)
         {
-            // Arrange and Act
-            var city = new City { Name = testName };
+            // Arrange & Act
+            var manufacturer = new Manufacturer { Name = testName };
 
             //Assert
-            Assert.AreEqual(city.Name, testName);
+            Assert.AreEqual(manufacturer.Name, testName);
         }
 
-        // ---- Tests for Adverts collection
+        // ----- Tests for VechicleModel collection
 
         [TestCase(123)]
         [TestCase(12)]
-        public void AdvertsCollection_ShouldGetAndSetDataCorrectly(int testId)
+        public void VehicleModelCollection_ShouldGetAndSetDataCorrectly(int testId)
         {
             // Arrange
-            var advert = new Advert() { Id = testId };
-            var set = new HashSet<Advert> { advert };
+            var vehicleModel = new VehicleModel() { Id = testId };
+            var set = new HashSet<VehicleModel> { vehicleModel };
 
             // Act
-            var city = new City() { Adverts = set };
+            var manufacturer = new Manufacturer() { Models = set };
 
             // Assert
-            Assert.AreEqual(city.Adverts.First().Id, testId);
+            Assert.AreEqual(manufacturer.Models.First().Id, testId);
         }
     }
 }

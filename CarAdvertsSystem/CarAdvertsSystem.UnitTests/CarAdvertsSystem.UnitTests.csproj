@@ -70,19 +70,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTests\Mocks\MockDbModel.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_ConstructorShould.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_DisposedWithoutParameters_Should.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_DisposedWithParameters_Should.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_MethodGetDeletableEntityRepository_Should.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_MethodGetEfGenericRepository_Should.cs" />
+    <Compile Include="DataTests\ProvidersTests\EfProviderTests\EfCarAdvertsDataProvider_SaveChangesShould.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_AddShould.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_AllShould.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_ConstructorShould.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_DeleteWithIntegerIdParameter_Should.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_DeleteWithTEntityParameter_Should.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_GetByIdShould.cs" />
-    <Compile Include="ModelsTests\AdvertTests.cs" />
-    <Compile Include="ModelsTests\CategoryTests.cs" />
-    <Compile Include="ModelsTests\CityTests.cs" />
-    <Compile Include="ModelsTests\ManufacturerTests.cs" />
-    <Compile Include="ModelsTests\FileTests.cs" />
-    <Compile Include="ModelsTests\UserTests.cs" />
-    <Compile Include="ModelsTests\VehicleModelTests.cs" />
+    <Compile Include="DataTests\ModelsTests\AdvertTests.cs" />
+    <Compile Include="DataTests\ModelsTests\CategoryTests.cs" />
+    <Compile Include="DataTests\ModelsTests\CityTests.cs" />
+    <Compile Include="DataTests\ModelsTests\ManufacturerTests.cs" />
+    <Compile Include="DataTests\ModelsTests\FileTests.cs" />
+    <Compile Include="DataTests\ModelsTests\UserTests.cs" />
+    <Compile Include="DataTests\ModelsTests\VehicleModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
