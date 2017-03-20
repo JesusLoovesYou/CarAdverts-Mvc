@@ -1,8 +1,10 @@
-﻿using CarAdverts.Common.Constants;
+﻿using System;
+using CarAdverts.Common.Constants;
 using CarAdverts.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace CarAdverts.Web.Models
@@ -348,6 +350,98 @@ namespace CarAdverts.Web.Models
 
         // ---- Tests for IsDeleted property
 
+        [Test]
+        public void IsDeleted_ShouldHaveEditableAttributeWhithCorrectValue()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("IsDeleted");
+
+            // Act
+            var editableAttribute = descriptionProp.GetCustomAttributes(typeof(EditableAttribute), false)
+                .Cast<EditableAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(editableAttribute, Is.Not.Null);
+        }
+
+        [Test]
+        public void IsDeleted_ShouldHaveDisplayAttributeWhithCorrectValue()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("IsDeleted");
+
+            // Act
+            var displayAttribute = descriptionProp.GetCustomAttributes(typeof(DisplayAttribute), false)
+                .Cast<DisplayAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(displayAttribute, Is.Not.Null);
+        }
+
+        // ---- Tests for DeletedOn property
+
+        [Test]
+        public void DeletedOn_ShouldHaveEditableAttributeWhithCorrectValue()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("DeletedOn");
+
+            // Act
+            var editableAttribute = descriptionProp.GetCustomAttributes(typeof(EditableAttribute), false)
+                .Cast<EditableAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(editableAttribute, Is.Not.Null);
+        }
+
+        [Test]
+        public void DeletedOn_ShouldHaveDisplayAttributeWhithCorrectValue()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("DeletedOn");
+
+            // Act
+            var displayAttribute = descriptionProp.GetCustomAttributes(typeof(DisplayAttribute), false)
+                .Cast<DisplayAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(displayAttribute, Is.Not.Null);
+        }
+
+        [Test]
+        public void DeletedOn_ShouldHaveDataTypeAttributeWhithCorrectValue()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("DeletedOn");
+
+            // Act
+            var displayAttribute = descriptionProp.GetCustomAttributes(typeof(DataTypeAttribute), false)
+                .Cast<DataTypeAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(displayAttribute, Is.Not.Null);
+        }
+
+        [Test]
+        public void DeletedOn_ShouldGetAndSetDataCorreclty()
+        {
+            // Arrange
+            var testTime = DateTime.Now;
+
+            // Act
+            var advert = new Advert { DeletedOn = testTime };
+
+            // Assert
+            Assert.AreEqual(advert.DeletedOn, testTime);
+        }
+
+        // ---- Tests for User property
+
         [TestCase("chuk@abv.bg")]
         [TestCase("tuturutka@yahoo.com")]
         public void User_ShouldGetAndSetDataCorreclty(string testUserEmail)
@@ -361,7 +455,7 @@ namespace CarAdverts.Web.Models
             // Assert
             Assert.AreEqual(advert.User.Email, testUserEmail);
         }
-
+        
         // ---- Tests for Picture property
 
         [TestCase(123)]
@@ -405,6 +499,60 @@ namespace CarAdverts.Web.Models
 
             // Act and Assert
             Assert.AreEqual(advert.Price, price);
+        }
+
+        // ---- Tests for CreatedOn property 
+
+        [Test]
+        public void CreatedOn_ShouldGetAndSetDataCorrectly()
+        {
+            var testDateTime = DateTime.Now;
+            // Arrange
+            var advert = new Advert() { CreatedOn = testDateTime };
+
+            // Act and Assert
+            Assert.AreEqual(advert.CreatedOn, testDateTime);
+        }
+
+        // ---- Tests for ModifiedOn property 
+        
+        [Test]
+        public void ModifiedOn_ShouldGetAndSetDataCorrectly()
+        {
+            var testDateTime = DateTime.Now;
+            // Arrange
+            var advert = new Advert() { ModifiedOn = testDateTime };
+
+            // Act and Assert
+            Assert.AreEqual(advert.ModifiedOn, testDateTime);
+        }
+
+        // ---- Tests for PreserveCreatedOn property 
+
+        [Test]
+        public void PreserveCreatedOn_ShouldHaveNotMappedAttribute()
+        {
+            // Arrange
+            var descriptionProp = typeof(Advert).GetProperty("PreserveCreatedOn");
+
+            // Act
+            var notMappedAttribute = descriptionProp.GetCustomAttributes(typeof(NotMappedAttribute), true)
+                .Cast<NotMappedAttribute>()
+                .FirstOrDefault();
+
+            // Assert
+            Assert.That(notMappedAttribute, Is.Not.Null);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void PreserveCreatedOn_ShouldGetAndSetDataCorrectly(bool isCreated)
+        {
+            // Arrange
+            var advert = new Advert() { PreserveCreatedOn = isCreated };
+
+            // Act and Assert
+            Assert.AreEqual(advert.PreserveCreatedOn, isCreated);
         }
     }
 }
