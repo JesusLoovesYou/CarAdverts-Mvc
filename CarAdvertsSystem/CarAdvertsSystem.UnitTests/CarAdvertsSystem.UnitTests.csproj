@@ -80,7 +80,7 @@
     <Compile Include="ModelsTests\CategoryTests.cs" />
     <Compile Include="ModelsTests\CityTests.cs" />
     <Compile Include="ModelsTests\ManufacturerTests.cs" />
-    <Compile Include="ModelsTests\PictureTests.cs" />
+    <Compile Include="ModelsTests\FileTests.cs" />
     <Compile Include="ModelsTests\UserTests.cs" />
     <Compile Include="ModelsTests\VehicleModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +103,10 @@
     <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
       <Project>{C116A0DA-7D57-496B-A0E0-22C07F937A93}</Project>
       <Name>CarAdverts.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarAdverts.Contracts\CarAdverts.Contracts.csproj">
+      <Project>{B4DFBE9A-1622-4AB2-B587-7ED2539729D8}</Project>
+      <Name>CarAdverts.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarAdverts.Data\CarAdverts.Data.csproj">
       <Project>{3D8E9022-3E1C-40D0-9029-A6AFA1DA0D3C}</Project>

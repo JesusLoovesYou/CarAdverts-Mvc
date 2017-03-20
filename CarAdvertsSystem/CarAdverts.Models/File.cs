@@ -1,7 +1,7 @@
-﻿using CarAdverts.Common.Constants;
-using CarAdverts.Models.Contracts;
+﻿using CarAdverts.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CarAdverts.Common.Constants;
 
 namespace CarAdverts.Models
 {
@@ -10,14 +10,18 @@ namespace CarAdverts.Models
         [Key]
         public int Id { get; set; }
 
-        //[StringLength(255)]
+        [Required]
+        [MaxLength(ValidationConstants.FileNameMaxLength)]
         public string Name { get; set; }
 
-        //[StringLength(100)]
+        [Required]
+        [MaxLength(ValidationConstants.FileContentTypeMaxLength)]
         public string ContentType { get; set; }
 
+        [Required]
         public byte[] Content { get; set; }
 
+        [Required]
         public FileType FileType { get; set; }
 
         public int AdvertId { get; set; }
