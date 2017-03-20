@@ -71,7 +71,10 @@
   <ItemGroup>
     <Compile Include="DataTests\Mocks\MockDbModel.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_AddShould.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_AllShould.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_ConstructorShould.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_DeleteWithIntegerIdParameter_Should.cs" />
+    <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_DeleteWithTEntityParameter_Should.cs" />
     <Compile Include="DataTests\RepositoriesTests\EfGenericRepositoryTests\EfGenericRepository_GetByIdShould.cs" />
     <Compile Include="ModelsTests\AdvertTests.cs" />
     <Compile Include="ModelsTests\CategoryTests.cs" />

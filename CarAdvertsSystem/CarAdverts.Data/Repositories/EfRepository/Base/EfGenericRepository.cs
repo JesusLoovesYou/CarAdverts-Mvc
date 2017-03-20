@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using Bytes2you.Validation;
 using CarAdverts.Data.Contracts;
 using CarAdverts.Data.Repositories.EfRepository.Contracts;
 
@@ -11,18 +12,16 @@ namespace CarAdverts.Data.Repositories.EfRepository.Base
     {
         public EfGenericRepository(ICarAdvertsSystemDbContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
-            }
+            Guard.WhenArgument(context, nameof(ICarAdvertsSystemDbContext)).IsNull().Throw();
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
 
-        protected IDbSet<T> DbSet { get; set; }
+        // to do mocked class and this properties protected
+        public IDbSet<T> DbSet { get; set; }
 
-        protected ICarAdvertsSystemDbContext Context { get; set; }
+        public ICarAdvertsSystemDbContext Context { get; set; }
 
         public virtual IQueryable<T> All()
         {
@@ -37,6 +36,8 @@ namespace CarAdverts.Data.Repositories.EfRepository.Base
 
         public virtual void Add(T entity)
         {
+            Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
+
             DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State != EntityState.Detached)
             {
@@ -61,6 +62,8 @@ namespace CarAdverts.Data.Repositories.EfRepository.Base
 
         public virtual void Delete(T entity)
         {
+            Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
+
             DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State != EntityState.Deleted)
             {
