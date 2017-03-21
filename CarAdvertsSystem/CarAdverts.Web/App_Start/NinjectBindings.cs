@@ -5,6 +5,8 @@ using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Data.Repositories.EfRepository.Base;
 using CarAdverts.Data.Repositories.EfRepository.Contracts;
 using Ninject.Modules;
+using CarAdverts.Services.Contracts;
+using CarAdverts.Services;
 
 namespace CarAdverts.Web
 {
@@ -18,6 +20,8 @@ namespace CarAdverts.Web
 
             this.Bind(typeof(IEfGenericRepository<>)).To(typeof(EfGenericRepository<>));
             this.Bind(typeof(IEfDeletableRepository<>)).To(typeof(EfDeletableRepository<>));
+
+            this.Bind<IAdvertService>().To<AdvertService>();
         }
     }
 }

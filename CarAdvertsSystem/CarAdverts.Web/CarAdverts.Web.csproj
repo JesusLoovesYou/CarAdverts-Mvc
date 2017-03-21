@@ -323,6 +323,10 @@
       <Project>{1e9188df-ea3a-4a97-beb6-f4495f425754}</Project>
       <Name>CarAdverts.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\CarAdverts.Services\CarAdverts.Services.csproj">
+      <Project>{2b1c4f87-5718-4bfb-ab9a-b4ff0df87280}</Project>
+      <Name>CarAdverts.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

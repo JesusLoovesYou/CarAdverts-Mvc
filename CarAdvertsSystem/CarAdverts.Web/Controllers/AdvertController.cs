@@ -13,6 +13,7 @@ using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
 using File = CarAdverts.Models.File;
+using CarAdverts.Services.Contracts;
 
 namespace CarAdverts.Web.Controllers
 {
@@ -22,10 +23,13 @@ namespace CarAdverts.Web.Controllers
 
         private IEfCarAdvertsDataProvider provider;
 
+        private IAdvertService advertService;
+
         public AdvertController(IEfCarAdvertsDataProvider provider,
-            IEfDeletableRepository<CarAdverts.Models.Advert> testadvert)
+            IAdvertService advertService)
         {
             this.provider = provider;
+            this.advertService = advertService;
         }
 
         [HttpGet]
@@ -46,7 +50,7 @@ namespace CarAdverts.Web.Controllers
                 .OrderBy(a => a.CreatedOn)
                 .ThenBy(a => a.Id)
                 //.Skip(itemsToSkip)
-                //.Take(ItemsPerPage)
+                //.Take(itemsperpage)
                 .ProjectTo<AdvertViewModel>()
                 .ToList();
 
@@ -94,39 +98,14 @@ namespace CarAdverts.Web.Controllers
                 CreatedOn = DateTime.Now
             };
 
-            // File upload
-            if (uploadedFiles != null)
-            {
-                foreach (HttpPostedFileBase file in uploadedFiles)
-                {
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        var picture = new File
-                        {
-                            Name = System.IO.Path.GetFileName(file.FileName),
-                            FileType = FileType.Photo,
-                            ContentType = file.ContentType
-                        };
-
-                        using (var reader = new System.IO.BinaryReader(file.InputStream))
-                        {
-                            picture.Content = reader.ReadBytes(file.ContentLength);
-                        }
-
-                        advert.Pictures.Add(picture);
-                    }
-                }
-            }
-
-            this.provider.Adverts.Add(advert);
             try
             {
-                this.provider.SaveChanges();
+                this.advertService.CreateAdvert(advert, uploadedFiles);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Triabva da prihvana greshkite
-                this.TempData["Notification"] = "Error.";
+
+                this.TempData["Notification"] = "Exeption.";
             }
             
 
@@ -143,7 +122,7 @@ namespace CarAdverts.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var advert = this.provider.Adverts.GetById(id);
+            var advert = this.advertService.GetById(id);
 
             if (advert == null)
             {
