@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_AddUploadedFilesToAdvert_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_ConstructorShould.cs" />
+    <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_CreateAdvert_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_GetById_Should.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_ConstructorShould.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_GetByIdShould.cs" />

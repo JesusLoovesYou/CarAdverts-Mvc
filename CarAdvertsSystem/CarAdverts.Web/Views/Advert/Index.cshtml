@@ -1,11 +1,15 @@
-﻿@model CarAdverts.Web.Models.Advert.PageableAdvertsListViewModel
+﻿@*@model CarAdverts.Web.Models.Advert.PageableAdvertsListViewModel*@
+@model PagedList.IPagedList<CarAdverts.Web.Models.Advert.AdvertViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Adverts list";
 }
 
 <h1>@ViewBag.Title</h1>
 <div class="container">
-    @foreach (var advert in Model.Adverts)
+    @foreach (var advert in Model)
     {
         <div class="col-md-10">
             <div class="row">
@@ -46,4 +50,9 @@
             }
         </ul>
     </nav>*@
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>

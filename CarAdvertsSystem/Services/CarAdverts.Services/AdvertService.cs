@@ -4,6 +4,7 @@ using CarAdverts.Services.Contracts;
 using System.Collections.Generic;
 using System.Web;
 using Bytes2you.Validation;
+using System.Linq;
 
 namespace CarAdverts.Services
 {
@@ -31,14 +32,22 @@ namespace CarAdverts.Services
 
         public void CreateAdvert(Advert advert, IEnumerable<HttpPostedFileBase> uploadedFiles)
         {
-            this.AddUploadedFilesToAdvert(advert, uploadedFiles);
+            Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
 
+            if (uploadedFiles.Count() > 0)
+            {
+                this.AddUploadedFilesToAdvert(advert, uploadedFiles);
+            }
+            
             this.efProvider.Adverts.Add(advert);
             this.efProvider.SaveChanges();
         }
 
+        // I dont know how to test it.
         public void AddUploadedFilesToAdvert(Advert advert, IEnumerable<HttpPostedFileBase> uploadedFiles)
         {
+            Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
+
             if (uploadedFiles != null)
             {
                 foreach (HttpPostedFileBase file in uploadedFiles)

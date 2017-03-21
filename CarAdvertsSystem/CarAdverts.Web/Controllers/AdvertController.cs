@@ -10,6 +10,7 @@ using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
 using CarAdverts.Services.Contracts;
+using PagedList;
 
 namespace CarAdverts.Web.Controllers
 {
@@ -29,10 +30,9 @@ namespace CarAdverts.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(AdvertSearchViewModel model, int id = 1)
+        public ActionResult Index(AdvertSearchViewModel model, int page = 1)
         {
-            var page = id;
-            var itemsToSkip = (page - 1) * ItemsPerPage;
+            //var itemsToSkip = (page - 1) * ItemsPerPage;
 
             var adverts = this.provider.Adverts
                 .All()
@@ -45,22 +45,20 @@ namespace CarAdverts.Web.Controllers
                 //            a.DistanceCoverage <= model.MaxDistanceCoverage)
                 .OrderBy(a => a.CreatedOn)
                 .ThenBy(a => a.Id)
-                //.Skip(itemsToSkip)
-                //.Take(itemsperpage)
                 .ProjectTo<AdvertViewModel>()
                 .ToList();
 
-            var allItemsCount = adverts.Count();
-            var totalpages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            //var allItemsCount = adverts.Count();
+            //var totalpages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
 
-            var viewModel = new PageableAdvertsListViewModel()
-            {
-                CurrentPage = page,
-                TotalPages = totalpages,
-                Adverts = adverts
-            };
-
-            return View(viewModel);
+            //var viewModel = new PageableAdvertsListViewModel()
+            //{
+            //    CurrentPage = page,
+            //    TotalPages = totalpages,
+            //    Adverts = adverts
+            //};
+            
+            return View(adverts.ToPagedList(page, 1));
         }
 
         [HttpGet]
