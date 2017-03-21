@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using CarAdverts.Data.Providers.EfProvider;
-using CarAdverts.Data.Repositories.EfRepository.Contracts;
 using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
-using File = CarAdverts.Models.File;
 using CarAdverts.Services.Contracts;
 
 namespace CarAdverts.Web.Controllers
@@ -133,6 +129,5 @@ namespace CarAdverts.Web.Controllers
 
             return View(advertView);
         }
-        
     }
 }

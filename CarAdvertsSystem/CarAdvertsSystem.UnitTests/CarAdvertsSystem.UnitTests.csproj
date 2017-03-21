@@ -92,6 +92,8 @@
     <Compile Include="DataTests\ModelsTests\UserTests.cs" />
     <Compile Include="DataTests\ModelsTests\VehicleModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesTests\FileServceTests\FileService_ConstructorShould.cs" />
+    <Compile Include="ServicesTests\FileServceTests\FileService_GetByIdShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -105,7 +107,6 @@
   <ItemGroup>
     <Folder Include="ControlersTests\" />
     <Folder Include="DataTests\RepositoriesTests\DeleatableEntityRepositoryTests\" />
-    <Folder Include="ServicesTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
@@ -123,6 +124,10 @@
     <ProjectReference Include="..\CarAdverts.Models\CarAdverts.Models.csproj">
       <Project>{1E9188DF-EA3A-4A97-BEB6-F4495F425754}</Project>
       <Name>CarAdverts.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\CarAdverts.Services\CarAdverts.Services.csproj">
+      <Project>{2b1c4f87-5718-4bfb-ab9a-b4ff0df87280}</Project>
+      <Name>CarAdverts.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

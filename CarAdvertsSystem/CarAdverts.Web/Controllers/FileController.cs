@@ -1,21 +1,22 @@
 ﻿using System.Web.Mvc;
-using CarAdverts.Data.Providers.EfProvider;
+using CarAdverts.Services.Contracts;
 
 namespace CarAdverts.Web.Controllers
 {
     public class FileController : Controller
     {
-        private IEfCarAdvertsDataProvider provider;
+        private IFileService fileService;
 
-        public FileController(IEfCarAdvertsDataProvider provider)
+        public FileController(IFileService fileService)
         {
-            this.provider = provider;
+            this.fileService = fileService;
         }
-
-        // GET: File
+        
+        [HttpGet]
         public ActionResult Index(int id)
         {
-            var fileToRetrieve = this.provider.Files.GetById(id);
+            var fileToRetrieve = this.fileService.GetById(id);
+
             return File(fileToRetrieve.Content, fileToRetrieve.ContentType);
         }
     }
