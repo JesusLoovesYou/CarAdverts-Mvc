@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Moq;
 using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Services;
-using CarAdverts.Models.Contracts;
 using CarAdverts.Data.Repositories.EfRepository.Contracts;
 using CarAdverts.Models;
 

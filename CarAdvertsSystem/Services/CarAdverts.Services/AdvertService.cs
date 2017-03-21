@@ -3,8 +3,7 @@ using CarAdverts.Models;
 using CarAdverts.Services.Contracts;
 using System.Collections.Generic;
 using System.Web;
-using System;
-using System.Linq;
+using Bytes2you.Validation;
 
 namespace CarAdverts.Services
 {
@@ -14,6 +13,8 @@ namespace CarAdverts.Services
 
         public AdvertService(IEfCarAdvertsDataProvider efProvider)
         {
+            Guard.WhenArgument(efProvider, nameof(efProvider)).IsNull().Throw();
+
             this.efProvider = efProvider;
         }
 
