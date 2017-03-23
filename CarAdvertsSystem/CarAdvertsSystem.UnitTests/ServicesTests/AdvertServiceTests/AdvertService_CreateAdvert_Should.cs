@@ -73,5 +73,7 @@ namespace CarAdvertsSystem.UnitTests.ServicesTests.AdvertServiceTests
             // Assert
             mockedEfProvider.Verify(p => p.SaveChanges(), Times.Once);
         }
+
+
     }
 }

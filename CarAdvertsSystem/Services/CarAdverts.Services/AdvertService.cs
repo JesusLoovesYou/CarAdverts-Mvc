@@ -34,7 +34,7 @@ namespace CarAdverts.Services
         {
             Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
 
-            if (uploadedFiles.Count() > 0)
+            if (uploadedFiles != null && uploadedFiles.Count() > 0)
             {
                 this.AddUploadedFilesToAdvert(advert, uploadedFiles);
             }

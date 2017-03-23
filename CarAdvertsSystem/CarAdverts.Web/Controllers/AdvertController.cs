@@ -11,6 +11,7 @@ using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
 using CarAdverts.Services.Contracts;
 using PagedList;
+using Bytes2you.Validation;
 
 namespace CarAdverts.Web.Controllers
 {
@@ -25,6 +26,9 @@ namespace CarAdverts.Web.Controllers
         public AdvertController(IEfCarAdvertsDataProvider provider,
             IAdvertService advertService)
         {
+            Guard.WhenArgument(provider, nameof(provider)).IsNull().Throw();
+            Guard.WhenArgument(advertService, nameof(advertService)).IsNull().Throw();
+
             this.provider = provider;
             this.advertService = advertService;
         }
