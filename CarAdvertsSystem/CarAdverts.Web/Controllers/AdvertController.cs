@@ -77,6 +77,8 @@ namespace CarAdverts.Web.Controllers
         [Authorize]
         public ActionResult Create(AdvertInputViewModel model, IEnumerable<HttpPostedFileBase> uploadedFiles)
         {
+            Guard.WhenArgument(model, nameof(model)).IsNull().Throw();
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);
@@ -95,6 +97,7 @@ namespace CarAdverts.Web.Controllers
                 Description = model.Description,
                 CreatedOn = DateTime.Now
             };
+            
 
             try
             {
@@ -102,8 +105,8 @@ namespace CarAdverts.Web.Controllers
             }
             catch (Exception)
             {
-
                 this.TempData["Notification"] = "Exeption.";
+                return View(model);
             }
             
 
