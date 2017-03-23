@@ -136,6 +136,7 @@
     <Compile Include="ServicesTests\FileServceTests\FileService_ConstructorShould.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_GetByIdShould.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertControllert_Constructor_Sould.cs" />
+    <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_Detail_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpGetMethod_Create_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpPostMethod_Create_Should.cs" />
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Constructor_Should.cs" />

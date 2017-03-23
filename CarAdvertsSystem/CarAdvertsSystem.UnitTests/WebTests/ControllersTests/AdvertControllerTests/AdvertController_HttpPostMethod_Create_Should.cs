@@ -49,6 +49,12 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
                 .WithModel<AdvertInputViewModel>(x => 
                 {
                     Assert.IsNull(x.Title);
+                    Assert.AreEqual(x.VehicleModelId, 0);
+                    Assert.AreEqual(x.Year, 0);
+                    Assert.AreEqual(x.Price, 0);
+                    Assert.AreEqual(x.Power, 0);
+                    Assert.AreEqual(x.DistanceCoverage, 0);
+                    Assert.AreEqual(x.CityId, 0);
                     Assert.IsNull(x.Description);
                 });
         }
@@ -129,8 +135,14 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
                 .ShouldRenderDefaultView()
                 .WithModel<AdvertInputViewModel>(x =>
                 {
-                    Assert.IsNull(x.Description);
                     Assert.IsNull(x.Title);
+                    Assert.AreEqual(x.VehicleModelId, 0);
+                    Assert.AreEqual(x.Year, 0);
+                    Assert.AreEqual(x.Price, 0);
+                    Assert.AreEqual(x.Power, 0);
+                    Assert.AreEqual(x.DistanceCoverage, 0);
+                    Assert.AreEqual(x.CityId, 0);
+                    Assert.IsNull(x.Description);
                 }
             );
         }
