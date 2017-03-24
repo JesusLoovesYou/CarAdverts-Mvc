@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
@@ -44,7 +45,7 @@ namespace CarAdverts.Web.Controllers
             
             try
             {
-                 var adv = advertService.Search(
+                 var adverts = advertService.Search(
                     model.VehicleModelId,
                     model.CityId,
                     model.MinYear,
@@ -54,9 +55,7 @@ namespace CarAdverts.Web.Controllers
                     model.MinPower,
                     model.MaxPower,
                     model.MinDistanceCoverage,
-                    model.MaxDistanceCoverage);
-
-                var adverts = adv
+                    model.MaxDistanceCoverage)
                 .OrderBy(a => a.CreatedOn)
                 .ThenBy(a => a.Id)
                 .ProjectTo<AdvertViewModel>()
@@ -90,6 +89,8 @@ namespace CarAdverts.Web.Controllers
             {
                 return this.View(model);
             }
+
+            var adv = Mapper.Map<AdvertInputViewModel, Advert>(model);
             
             var advert = new Advert()
             {
@@ -105,7 +106,6 @@ namespace CarAdverts.Web.Controllers
                 CreatedOn = DateTime.Now
             };
             
-
             try
             {
                 this.advertService.CreateAdvert(advert, uploadedFiles);

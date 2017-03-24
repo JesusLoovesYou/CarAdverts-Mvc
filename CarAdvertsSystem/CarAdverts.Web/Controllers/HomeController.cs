@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Web.Models;
-using CarAdverts.Web.Models.Advert;
 
 namespace CarAdverts.Web.Controllers
 {
