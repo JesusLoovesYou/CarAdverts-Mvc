@@ -24,12 +24,12 @@ namespace CarAdverts.Web.Models.Advert
         public int MinDistanceCoverage { get; set; }
         public int MaxDistanceCoverage { get; set; }
 
-        public IEnumerable<CategoryViewModel> Categories { get; set; }
+        //public IEnumerable<CategoryViewModel> Categories { get; set; }
        
-        public IEnumerable<ManufacturerViewModel> Manufacturers { get; set; }
+        //public IEnumerable<ManufacturerViewModel> Manufacturers { get; set; }
        
-        public IEnumerable<VehicleModelViewModel> VehicleModels { get; set; }
+        //public IEnumerable<VehicleModelViewModel> VehicleModels { get; set; }
         
-        public IEnumerable<CityViewModel> Cities { get; set; }
+        //public IEnumerable<CityViewModel> Cities { get; set; }
     }
 }
