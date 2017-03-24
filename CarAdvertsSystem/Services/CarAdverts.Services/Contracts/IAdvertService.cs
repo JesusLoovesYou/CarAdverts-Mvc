@@ -12,12 +12,16 @@ namespace CarAdverts.Services.Contracts
 
         Advert GetById(int? id);
 
-        //IQueryable<Advert> Search(
-        //        int vehicleModelId,
-        //        int cityId,
-        //        int minYear, int maxYear,
-        //        decimal minPrice, decimal maxPrice,
-        //        int minPower, int maxPower,
-        //        int minDistanceCoverage, int maxDistanceCoverage);
+        IQueryable<Advert> Search(
+            int vehicleModelId,
+            int cityId,
+            int minYear,
+            int maxYear,
+            decimal minPrice,
+            decimal maxPrice,
+            int minPower,
+            int maxPower,
+            int minDistanceCoverage,
+            int maxDistanceCoverage);
     }
 }

@@ -5,7 +5,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
-using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
@@ -18,51 +17,59 @@ namespace CarAdverts.Web.Controllers
     public class AdvertController : Controller
     {
         private const int ItemsPerPage = 1;
+        
+        private readonly IAdvertService advertService;
 
-        private IEfCarAdvertsDataProvider provider;
-
-        private IAdvertService advertService;
-
-        public AdvertController(IEfCarAdvertsDataProvider provider,
-            IAdvertService advertService)
+        public AdvertController(IAdvertService advertService)
         {
-            Guard.WhenArgument(provider, nameof(provider)).IsNull().Throw();
             Guard.WhenArgument(advertService, nameof(advertService)).IsNull().Throw();
-
-            this.provider = provider;
+            
             this.advertService = advertService;
         }
 
         [HttpGet]
         public ActionResult Index(AdvertSearchViewModel model, int page = 1)
         {
-            //var itemsToSkip = (page - 1) * ItemsPerPage;
+            if (model == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-            var adverts = this.provider.Adverts
-                .All()
-                //.Where(a => a.VehicleModelId == model.VehicleModelId &&
-                //            a.CityId == model.CityId &&
-                //            a.Year >= model.MinYear && a.Year <= model.MaxPower &&
-                //            a.Price >= model.MinPrice && a.Price <= model.MaxPrice &&
-                //            a.Power >= model.MinPower && a.Power <= model.MaxPower &&
-                //            a.DistanceCoverage >= model.MinDistanceCoverage &&
-                //            a.DistanceCoverage <= model.MaxDistanceCoverage)
+            if (!this.ModelState.IsValid)
+            {
+                this.TempData["Notification"] = "Exeption.";
+
+                return RedirectToAction("Index", "Home");
+            }
+            
+            try
+            {
+                 var adv = advertService.Search(
+                    model.VehicleModelId,
+                    model.CityId,
+                    model.MinYear,
+                    model.MaxYear,
+                    model.MinPrice,
+                    model.MaxPrice,
+                    model.MinPower,
+                    model.MaxPower,
+                    model.MinDistanceCoverage,
+                    model.MaxDistanceCoverage);
+
+                var adverts = adv
                 .OrderBy(a => a.CreatedOn)
                 .ThenBy(a => a.Id)
                 .ProjectTo<AdvertViewModel>()
                 .ToList();
 
-            //var allItemsCount = adverts.Count();
-            //var totalpages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+                return View(adverts.ToPagedList(page, ItemsPerPage));
+            }
+            catch (Exception)
+            {
+                this.TempData["Notification"] = "Exeption.";
 
-            //var viewModel = new PageableAdvertsListViewModel()
-            //{
-            //    CurrentPage = page,
-            //    TotalPages = totalpages,
-            //    Adverts = adverts
-            //};
-            
-            return View(adverts.ToPagedList(page, 1));
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpGet]

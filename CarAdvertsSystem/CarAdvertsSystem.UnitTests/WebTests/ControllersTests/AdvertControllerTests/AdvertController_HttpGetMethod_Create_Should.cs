@@ -14,9 +14,8 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         public void ReturnCorrectActionResult()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
             var advertService = new Mock<IAdvertService>();
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act
             advertController.WithCallTo(x => x.Create()).ShouldRenderDefaultView();

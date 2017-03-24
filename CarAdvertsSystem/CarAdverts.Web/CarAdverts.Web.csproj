@@ -239,6 +239,7 @@
     <Compile Include="Models\Advert\AdvertInputViewModel.cs" />
     <Compile Include="Models\Advert\AdvertSearchViewModel.cs" />
     <Compile Include="Models\Advert\AdvertViewModel.cs" />
+    <Compile Include="Models\Contracts\IAdvertSearchViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\Advert\PageableAdvertsListViewModel.cs" />

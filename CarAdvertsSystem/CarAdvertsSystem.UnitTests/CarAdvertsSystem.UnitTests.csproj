@@ -66,6 +66,10 @@
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -139,6 +143,7 @@
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_Detail_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpGetMethod_Create_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpPostMethod_Create_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_Index_Should.cs" />
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Constructor_Should.cs" />
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Index_Should.cs" />
   </ItemGroup>

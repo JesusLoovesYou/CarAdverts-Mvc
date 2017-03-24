@@ -72,26 +72,30 @@ namespace CarAdverts.Services
             }
         }
 
-        //public IQueryable<Advert> Search(
-        //        int vehicleModelId,
-        //        int cityId, 
-        //        int minYear, int maxYear,
-        //        decimal minPrice, decimal maxPrice,
-        //        int minPower, int maxPower,
-        //        int minDistanceCoverage, int maxDistanceCoverage)
-        //{
-        //    var adverts = this.efProvider.Adverts
-        //        .All();
-        //    //.Where(a => a.VehicleModelId == model.VehicleModelId &&
-        //    //            a.CityId == model.CityId &&
-        //    //            a.Year >= model.MinYear && a.Year <= model.MaxPower &&
-        //    //            a.Price >= model.MinPrice && a.Price <= model.MaxPrice &&
-        //    //            a.Power >= model.MinPower && a.Power <= model.MaxPower &&
-        //    //            a.DistanceCoverage >= model.MinDistanceCoverage &&
-        //    //            a.DistanceCoverage <= model.MaxDistanceCoverage)
+        public IQueryable<Advert> Search(
+                int vehicleModelId,
+                int cityId,
+                int minYear,
+                int maxYear,
+                decimal minPrice,
+                decimal maxPrice,
+                int minPower,
+                int maxPower,
+                int minDistanceCoverage,
+                int maxDistanceCoverage)
+        {
+            var adverts = this.efProvider.Adverts
+                .All();
+            //.Where(a => a.VehicleModelId == model.VehicleModelId &&
+            //            a.CityId == model.CityId &&
+            //            a.Year >= model.MinYear && a.Year <= model.MaxPower &&
+            //            a.Price >= model.MinPrice && a.Price <= model.MaxPrice &&
+            //            a.Power >= model.MinPower && a.Power <= model.MaxPower &&
+            //            a.DistanceCoverage >= model.MinDistanceCoverage &&
+            //            a.DistanceCoverage <= model.MaxDistanceCoverage)
 
-        //    return adverts;
-        //}
+            return adverts;
+        }
 
         //public IQueryable<Advert> SearchWithPaging(AdvertSearchViewModel searchModel, int page, int ItemsPerPage)
         //{

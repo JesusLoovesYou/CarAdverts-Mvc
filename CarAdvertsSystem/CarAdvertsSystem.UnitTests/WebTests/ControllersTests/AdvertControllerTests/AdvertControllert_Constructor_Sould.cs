@@ -11,36 +11,23 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
     public class AdvertControllert_Constructor_Sould
     {
         [Test]
-        public void ThrowArgumentNullException_WhenEfProviderParameterIsNull()
-        {
-            // Arrange
-            IEfCarAdvertsDataProvider efProvider = null;
-            var advertService = new Mock<IAdvertService>();
-
-            // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new AdvertController(efProvider, advertService.Object));
-        }
-
-        [Test]
         public void ThrowArgumentNullException_WhenAdvertServiceParameterIsNull()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
             IAdvertService advertService = null;
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new AdvertController(efProvider.Object, advertService));
+            Assert.Throws<ArgumentNullException>(() => new AdvertController(advertService));
         }
         
         [Test]
-        public void CreateInstanceOfAdvertService_WhenFileServiceParameterIsNotNull()
+        public void CreateInstanceOfAdvertService_WhenAdvertServiceParameterIsNotNull()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
             var advertService = new Mock<IAdvertService>();
 
             // Act
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act and Assert
             Assert.That(advertController, Is.Not.Null);

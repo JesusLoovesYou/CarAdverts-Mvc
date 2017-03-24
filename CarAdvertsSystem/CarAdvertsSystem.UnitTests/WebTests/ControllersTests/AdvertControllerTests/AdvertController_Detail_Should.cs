@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using Moq;
-using System.Web;
 using CarAdverts.Web.Models.Advert;
-using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Services.Contracts;
 using CarAdverts.Models;
 using CarAdverts.Web.Controllers;
 using TestStack.FluentMVCTesting;
 using System.Net;
-using CarAdverts.Web.Models;
 using CarAdverts.Web;
 using System.Reflection;
 
@@ -32,11 +25,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         public void HttpStatusCode_BadRequest_WhenIdParameterIsNull()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
             var advertService = new Mock<IAdvertService>();
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act and Assert
             advertController
@@ -48,11 +39,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         public void InvokeAdvertServiceMethod_GetById_Once_WhenIdParameterIsNotNull()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
             var advertService = new Mock<IAdvertService>();
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act
             advertController.Detail(1);
@@ -65,11 +54,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         public void InvokeAdvertServiceMethod_GetById_Never_WhenIdParameterIsNull()
         {
             // Arrange
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
             var advertService = new Mock<IAdvertService>();
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act
             advertController.Detail(null);
@@ -83,12 +70,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         {
             // Arrange
             Advert advert = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.GetById(It.IsAny<int?>())).Returns(advert);
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act and Assert
             advertController
@@ -115,12 +101,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
                 Title = advert.Title,
                 CreatedOn = advert.CreatedOn
             };
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.GetById(It.IsAny<int?>())).Returns(advert);
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             // Act and Assert
             advertController

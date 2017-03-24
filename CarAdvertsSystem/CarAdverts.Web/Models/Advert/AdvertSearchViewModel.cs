@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using CarAdverts.Web.Models.Contracts;
 
 namespace CarAdverts.Web.Models.Advert
 {
-    public class AdvertSearchViewModel
+    public class AdvertSearchViewModel : IAdvertSearchViewModel
     {
         public int CategoryId { get; set; }
 

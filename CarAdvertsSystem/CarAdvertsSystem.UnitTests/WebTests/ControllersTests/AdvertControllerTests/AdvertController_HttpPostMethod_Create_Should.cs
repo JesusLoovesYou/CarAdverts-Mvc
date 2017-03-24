@@ -33,13 +33,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -73,13 +71,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -103,13 +99,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             AdvertInputViewModel model = null;
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -122,10 +116,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             // Arrange
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
+            
             var advertService = new Mock<IAdvertService>();
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
 
             advertController.ModelState.AddModelError("test", "test");
 
@@ -161,13 +154,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -191,13 +182,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -221,13 +210,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             var model = new AdvertInputViewModel();
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
-
-            var efProvider = new Mock<IEfCarAdvertsDataProvider>();
-
+            
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(efProvider.Object, advertService.Object);
+            var advertController = new AdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
