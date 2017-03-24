@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using CarAdverts.Web.AutoMapping;
 
 namespace CarAdverts.Web.Models.Advert
@@ -18,13 +19,15 @@ namespace CarAdverts.Web.Models.Advert
 
         public int Power { get; set; }
 
-        public string DistanceCoverage { get; set; }
+        public int DistanceCoverage { get; set; }
 
-        public string CityId { get; set; }
+        public int CityId { get; set; }
 
         public string Description { get; set; }
         
         public DateTime CreatedOn { get; set; }
+
+        public string UserId { get; set; }
 
         public string Url => $"/adverts/{this.Id}/{this.Title.ToLower().Replace(" ", "-")}";
 

@@ -2,7 +2,7 @@
 
 namespace CarAdverts.Web.Models.Advert
 {
-    public class AdvertInputViewModel //: IMapFrom<CarAdverts.Models.Advert>
+    public class AdvertInputViewModel
     {
         public string Title { get; set; }
         

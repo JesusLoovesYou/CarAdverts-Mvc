@@ -89,8 +89,6 @@ namespace CarAdverts.Web.Controllers
             {
                 return this.View(model);
             }
-
-            var adv = Mapper.Map<AdvertInputViewModel, Advert>(model);
             
             var advert = new Advert()
             {

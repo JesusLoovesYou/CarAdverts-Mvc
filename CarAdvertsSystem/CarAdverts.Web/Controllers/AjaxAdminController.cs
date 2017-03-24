@@ -47,13 +47,7 @@ namespace CarAdverts.Web.Controllers
             {
                 return Json(null, null);
             }
-
-            string userId;
-            if (User.Identity.IsAuthenticated)
-            {
-                userId = User.Identity.GetUserId();
-            }
-
+            
             var advert = new Advert()
             {
                 Title = model.Title,
@@ -62,8 +56,8 @@ namespace CarAdverts.Web.Controllers
                 Year = model.Year,
                 Price = model.Price,
                 Power = model.Power,
-                DistanceCoverage = int.Parse(model.DistanceCoverage),
-                CityId = int.Parse(model.CityId),
+                DistanceCoverage = model.DistanceCoverage,
+                CityId = model.CityId,
                 Description = model.Description,
                 CreatedOn = DateTime.Now
             };
@@ -74,24 +68,58 @@ namespace CarAdverts.Web.Controllers
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult GetById(int id)
         {
             var advert = this.provider.Adverts.GetById(id);
-            return Json(advert, JsonRequestBehavior.AllowGet);
+            var model = AutoMapper.Mapper.Map<Advert, AdvertViewModel>(advert);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Update(Advert emp)
+        public JsonResult Update(AdvertViewModel model)
         {
-            this.provider.Adverts.Update(emp);
+            if (!ModelState.IsValid)
+            {
+                return Json(null, null);
+            }
 
-            return Json(emp, JsonRequestBehavior.AllowGet);
+            var advert = this.provider.Adverts.GetById(model.Id);
+            advert.Title = model.Title;
+            advert.VehicleModelId = model.VehicleModelId;
+            advert.Year = model.Year;
+            advert.Price = model.Price;
+            advert.Power = model.Power;
+            advert.DistanceCoverage = model.DistanceCoverage;
+            advert.CityId = model.CityId;
+            advert.Description = model.Description;
+            advert.Id = model.Id;
+            advert.UserId = model.UserId;
+            
+            try
+            {
+                this.provider.Adverts.Update(advert);
+                this.provider.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                
+            }
+            
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
         public JsonResult Delete(int id)
         {
             var adv = this.provider.Adverts.GetById(id);
             this.provider.Adverts.Delete(id);
+            this.provider.SaveChanges();
 
-            return Json(adv, JsonRequestBehavior.AllowGet);
+            var model = AutoMapper.Mapper.Map<Advert, AdvertViewModel>(adv);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
     }
