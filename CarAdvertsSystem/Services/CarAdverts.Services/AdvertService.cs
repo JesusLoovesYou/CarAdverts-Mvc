@@ -19,7 +19,7 @@ namespace CarAdverts.Services
             this.efProvider = efProvider;
         }
 
-        public IQueryable<Advert> All()      //////////// da go iztestvam
+        public IQueryable<Advert> All()
         {
             var adverts = this.efProvider.Adverts.All();
 

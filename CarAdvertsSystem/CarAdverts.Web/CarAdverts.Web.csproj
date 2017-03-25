@@ -259,6 +259,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Cars\01.jpg" />
+    <Content Include="Images\Cars\02.jpg" />
+    <Content Include="Images\Cars\03.jpg" />
+    <Content Include="Images\Cars\04.jpg" />
+    <Content Include="Scripts\bootstrap-carousel.js" />
     <Content Include="Scripts\_admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

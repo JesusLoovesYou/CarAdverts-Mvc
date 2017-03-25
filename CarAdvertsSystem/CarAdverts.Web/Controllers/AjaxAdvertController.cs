@@ -69,7 +69,9 @@ namespace CarAdverts.Web.Areas.Adminstrator.Controllers
                 .ProjectTo<AdvertViewModel>()
                 .ToList();
 
-            return Json(model, JsonRequestBehavior.AllowGet);
+            var result = Json(model, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = int.MaxValue;
+            return result;
         }
 
         [HttpPost]
@@ -114,7 +116,10 @@ namespace CarAdverts.Web.Areas.Adminstrator.Controllers
             var advert = this.advertService.GetById(id);
             var model = AutoMapper.Mapper.Map<Advert, AdvertViewModel>(advert);
 
-            return Json(model, JsonRequestBehavior.AllowGet);
+            var result = Json(model, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = int.MaxValue;
+
+            return result;
         }
 
         [HttpPost]
@@ -147,8 +152,7 @@ namespace CarAdverts.Web.Areas.Adminstrator.Controllers
                 // Notification error
                 // neznam
             }
-
-
+            
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
@@ -160,8 +164,11 @@ namespace CarAdverts.Web.Areas.Adminstrator.Controllers
             this.advertService.Delete(advert);
 
             var model = AutoMapper.Mapper.Map<Advert, AdvertViewModel>(advert);
+            
+            var result = Json(model, JsonRequestBehavior.AllowGet);
+            result.MaxJsonLength = int.MaxValue;
 
-            return Json(model, JsonRequestBehavior.AllowGet);
+            return result;
         }
 
         [HttpGet]

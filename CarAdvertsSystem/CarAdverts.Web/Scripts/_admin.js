@@ -5,10 +5,9 @@ $(document).ready(function () {
 
 //Load Data function  
 function loadData(filter) {
-    //debugger;
-    if (filter === undefined) {
-        filter = '';
-    }
+    //if (filter === undefined) {
+    //    filter = '';
+    //}
 
     $.ajax({
         url: "/AjaxAdvert/List/" + filter,
@@ -18,6 +17,7 @@ function loadData(filter) {
         success: function (result) {
             var html = '';
             $.each(result, function (key, item) {
+                
                 html += '<tr>';
                 html += '<td><strong>' + item.Title + '</strong></td>';
                 html += '<td>' + item.VehicleModelId + '</td>';
@@ -117,7 +117,7 @@ function getById(advId) {
             $('#Description').val(result.Description);
             $('#Id').val(result.Id);
             $('#UserId').val(result.UserId);
-
+            
             $('#myModal').modal('show');
             $('#btnUpdate').show();
             $('#btnAdd').hide();
@@ -126,12 +126,13 @@ function getById(advId) {
             alert(errormessage.responseText);
         }
     });
+
     return false;
 }
 
 //function for updating advert's record  
 function Update() {
-    //debugger;
+    //
     var res = validate();
     if (res === false) {
         return false;
@@ -180,7 +181,7 @@ function Delele(id) {
     var ans = confirm("Are you sure you want to delete this Record?");
     if (ans) {
         $.ajax({
-            url: "/AjaxAdvert/Delete?filter=" + id.trim(),
+            url: "/AjaxAdvert/Delete?id=" + id,
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",

@@ -1,32 +1,62 @@
 ﻿@using CarAdverts.Models
 @model CarAdverts.Web.Models.Advert.AdvertViewModel
 @{
-    ViewBag.Title = "Advert detail.";
+    ViewBag.Title = "Advert detail";
 }
 
-<h1>@ViewBag.Title</h1>
+<div class="container adv-detail-wrapper">
 
-<div>
-    This is title of our advert: @Model.Title
+    <div class="images">
+        <div class="image-wrapper">
+            <img id="main-img" class="car-img" src="~/File/Index?id=@Model.FirstPictureId" alt="@Model.Title" />
+        </div>
+        @if (Model.Pictures.Any(p => p.FileType == FileType.Photo))
+        {
+            <ul>
+                @{var pictures = Model.Pictures.Where(p => p.FileType == FileType.Photo).ToList();
+                for (var i = 0; i < pictures.Count(); i++)
+                    {
+                        <li>
+                            <div class="image-wrapper-sm @if (i == 0) { @("selected") }" >
+                                <img class="car-img" src="~/File/Index?id=@pictures[i].Id" alt="picture" />
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+         }
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".image-wrapper-sm").on("click", function (e) {
+                var wrapper = $(e.currentTarget);
+                var selectedClass = "selected";
+
+                $(".image-wrapper-sm").removeClass(selectedClass);
+                wrapper.addClass(selectedClass);
+                $("#main-img").attr("src", $(e.target).attr("src"));
+            })
+        });
+    </script>
+    <div class="adv-info">
+        <h2>Price: @Model.Price</h2>
+        <h1>@Model.Title</h1>
+        <div class="parameters">
+            <div class="form-group">
+                <span>Year:</span>
+                <strong>@Model.Year</strong>
+            </div>
+            <div class="form-group">
+                <span>Power:</span>
+                <strong>@Model.Power</strong>
+            </div>
+            <div class="form-group">
+                <span>DistanceCoverage:</span>
+                <strong>@Model.DistanceCoverage</strong>
+            </div>
+        </div>
+        <div class="form-group description">
+            <span>@Model.Description</span>
+        </div>
+    </div>
 </div>
-
-@if (Model.Pictures.Any(p => p.FileType == FileType.Photo))
-{
-    var pictures = Model.Pictures.Where(p => p.FileType == FileType.Photo);
-    foreach (var picture in pictures)
-    {
-        <dt>
-            Picture
-        </dt>
-        <dd>
-            <img class="car-img" src="~/File/Index?id=@picture.Id" alt="picture" />
-        </dd>
-    }
-}
-
-<style>
-    .car-img {
-        width: 100px;
-        height: 100px;
-    }
-</style>

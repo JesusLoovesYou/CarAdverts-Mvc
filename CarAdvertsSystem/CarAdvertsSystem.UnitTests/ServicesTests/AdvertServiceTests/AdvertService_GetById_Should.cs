@@ -25,7 +25,7 @@ namespace CarAdvertsSystem.UnitTests.ServicesTests.AdvertServiceTests
         }
 
         [Test]
-        public void InvoceEfProviderMethodGetById_Once_IfParameterIdIsNotNull()
+        public void InvoceEfProviderAdvertMethod_GetById_Once_IfParameterIdIsNotNull()
         {
             // Arrange
             var mockedAdvertRepository = new Mock<IEfDeletableRepository<Advert>>();
@@ -41,7 +41,7 @@ namespace CarAdvertsSystem.UnitTests.ServicesTests.AdvertServiceTests
         }
 
         [Test]
-        public void InvoceEfProviderMethodGetById_Never_IfParameterIdIsNull()
+        public void InvoceEfProviderAdvertMethod_GetById_Never_IfParameterIdIsNull()
         {
             // Arrange
             var mockedAdvertRepository = new Mock<IEfDeletableRepository<Advert>>();

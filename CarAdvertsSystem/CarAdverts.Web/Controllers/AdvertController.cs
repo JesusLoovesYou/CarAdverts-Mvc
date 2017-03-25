@@ -16,7 +16,7 @@ namespace CarAdverts.Web.Controllers
 {
     public class AdvertController : Controller
     {
-        private const int ItemsPerPage = 1;
+        private const int ItemsPerPage = 2;
         
         private readonly IAdvertService advertService;
 

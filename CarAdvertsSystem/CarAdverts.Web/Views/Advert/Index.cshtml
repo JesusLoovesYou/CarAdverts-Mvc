@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<CarAdverts.Web.Models.Advert.AdvertViewModel>
 @using PagedList.Mvc;
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
@@ -7,29 +8,24 @@
 }
 
 <h1>@ViewBag.Title</h1>
-<div class="container">
+<div class="container advret-container">
     @foreach (var advert in Model)
     {
-        <div class="col-md-10">
-            <div class="row">
-                <h4>
-                    <a href="@advert.Url">@advert.Title</a>
-                </h4>
-                <img class="car-img" src="~/File/Index?id=@advert.FirstPictureId" alt="picture" />
-            </div>
+        <div class="col-md-12">
+            <a class="advert-link" href="@advert.Url">
+                <div class="row">
+                    <div class="img-wrapper">
+                        <img class="car-img" src="~/File/Index?id=@advert.FirstPictureId" alt="@advert.Title" />
+                    </div>
+                    <p class="price">Price: @advert.Price</p>
+                    <h4>@advert.Title</h4>
+                    <p class="description">@advert.Description</p>
+                </div>
+            </a>
+            <hr/>
         </div>
     }
-
-    <br />
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
     @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
-
-<style>
-    img {
-        width: 50px;
-        height: 50px;
-    }
-</style>
