@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using CarAdverts.Web.AutoMapping;
 
@@ -30,6 +31,19 @@ namespace CarAdverts.Web.Models.Advert
         public string UserId { get; set; }
 
         public string Url => $"/adverts/{this.Id}/{this.Title.ToLower().Replace(" ", "-")}";
+
+        public int? FirstPictureId
+        {
+            get
+            {
+                if (this.Pictures == null || this.Pictures.ToList().Count == 0)
+                {
+                    return null;
+                }
+
+                return this.Pictures.First().Id;
+            }
+        }
 
         public IEnumerable<FileViewModel> Pictures { get; set; }
     }

@@ -12,6 +12,14 @@ namespace CarAdverts.Services.Contracts
 
         Advert GetById(int? id);
 
+        void Delete(Advert advert);
+
+        void Delete(int id);
+
+        void Update(Advert advert);
+
+        IQueryable<Advert> All();
+
         IQueryable<Advert> Search(
             int vehicleModelId,
             int cityId,

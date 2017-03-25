@@ -4,9 +4,14 @@ $(document).ready(function () {
 });
 
 //Load Data function  
-function loadData() {
+function loadData(filter) {
+    //debugger;
+    if (filter === undefined) {
+        filter = '';
+    }
+
     $.ajax({
-        url: "/AjaxAdmin/List",
+        url: "/AjaxAdvert/List/" + filter,
         type: "GET",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -33,6 +38,24 @@ function loadData() {
     });
 }
 
+//Filter data
+function Filter(filter) {
+
+    $.ajax({
+        url: "/AjaxAdvert/Filter/" + filter,
+        //data: JSON.stringify(filter),
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            loadData();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
 //Add Data Function   
 function Add() {
     var res = validate();
@@ -52,7 +75,7 @@ function Add() {
     };
 
     $.ajax({
-        url: "/AjaxAdmin/Add",
+        url: "/AjaxAdvert/Add",
         data: JSON.stringify(advertObj),
         type: "POST",
         contentType: "application/json;charset=utf-8",
@@ -79,7 +102,7 @@ function getById(advId) {
     $('#Description').css('border-color', 'lightgrey');
 
     $.ajax({
-        url: "/AjaxAdmin/GetById/" + advId,
+        url: "/AjaxAdvert/GetById/" + advId,
         type: "GET",
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
@@ -127,7 +150,7 @@ function Update() {
     };
 
     $.ajax({
-        url: "/AjaxAdmin/Update",
+        url: "/AjaxAdvert/Update",
         data: JSON.stringify(advertObj),
         type: "POST",
         contentType: "application/json;charset=utf-8",
@@ -157,7 +180,7 @@ function Delele(id) {
     var ans = confirm("Are you sure you want to delete this Record?");
     if (ans) {
         $.ajax({
-            url: "/AjaxAdmin/Delete/" + id,
+            url: "/AjaxAdvert/Delete?filter=" + id.trim(),
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
@@ -194,6 +217,7 @@ function clearTextBox() {
     $('#CityId').css('border-color', 'lightgrey');
     $('#Description').css('border-color', 'lightgrey');
 }
+
 //Valdidation using jquery                                        ---------------------------------- validation -----------------
 function validate() {
     var isValid = true;

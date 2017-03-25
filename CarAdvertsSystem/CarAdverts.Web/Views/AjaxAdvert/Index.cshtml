@@ -1,33 +1,33 @@
 ﻿<link href="~/Content/bootstrap.css" rel="stylesheet" />
 
 <div class="container">
-    <h2>Employees Record</h2>
+    <h2>Adverts Record</h2>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Advert</button><br /><br />
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>
+                <th id="tile" onclick="loadData('title')">
                     Title
                 </th>
-                <th>
+                <th id="modelId" onclick="loadData('modelId')">
                     VehicleModelId
                 </th>
-                <th>
+                <th id="year" onclick="loadData('year')">
                     Year
                 </th>
-                <th>
+                <th id="price" onclick="loadData('price')">
                     Price
                 </th>
-                <th>
+                <th id="power" onclick="loadData('power')">
                     Power
                 </th>
-                <th>
+                <th id="distCoverage" onclick="loadData('distCoverage')">
                     DistanceCoverage
                 </th>
-                <th>
+                <th id="cityId" onclick="loadData('cityId')">
                     CityId
                 </th>
-                <th>
+                <th id="description" onclick="loadData('description')">
                     Description
                 </th>
             </tr>
@@ -93,8 +93,9 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/admin")
+    @Scripts.Render("~/bundles/jquery");
 }

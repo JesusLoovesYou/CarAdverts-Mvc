@@ -19,6 +19,13 @@ namespace CarAdverts.Services
             this.efProvider = efProvider;
         }
 
+        public IQueryable<Advert> All()      //////////// da go iztestvam
+        {
+            var adverts = this.efProvider.Adverts.All();
+
+            return adverts;
+        }
+
         public Advert GetById(int? id)
         {
             if (id == null)
@@ -29,6 +36,27 @@ namespace CarAdverts.Services
             var advert = this.efProvider.Adverts.GetById(id);
             return advert;
         }
+
+        public void Delete(Advert advert)        //////////// da go iztestvam
+        {
+            Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
+
+            this.efProvider.Adverts.Delete(advert);
+            this.efProvider.SaveChanges();
+        }
+
+        public void Delete(int id)        //////////// da go iztestvam
+        {
+            this.efProvider.Adverts.Delete(id);
+            this.efProvider.SaveChanges();
+        }
+
+        public void Update(Advert advert)      //////////// da go iztestvam
+        {
+            this.efProvider.Adverts.Update(advert);
+            this.efProvider.SaveChanges();
+        }
+
 
         public void CreateAdvert(Advert advert, IEnumerable<HttpPostedFileBase> uploadedFiles)
         {
@@ -72,7 +100,7 @@ namespace CarAdverts.Services
             }
         }
 
-        public IQueryable<Advert> Search(
+        public IQueryable<Advert> Search(         //////////// da go iztestvam
                 int vehicleModelId,
                 int cityId,
                 int minYear,
@@ -96,26 +124,5 @@ namespace CarAdverts.Services
 
             return adverts;
         }
-
-        //public IQueryable<Advert> SearchWithPaging(AdvertSearchViewModel searchModel, int page, int ItemsPerPage)
-        //{
-        //    var itemsToSkip = (page - 1) * ItemsPerPage;
-
-        //    var adverts = this.efProvider.Adverts
-        //        .All()
-        //        //.Where(a => a.VehicleModelId == model.VehicleModelId &&
-        //        //            a.CityId == model.CityId &&
-        //        //            a.Year >= model.MinYear && a.Year <= model.MaxPower &&
-        //        //            a.Price >= model.MinPrice && a.Price <= model.MaxPrice &&
-        //        //            a.Power >= model.MinPower && a.Power <= model.MaxPower &&
-        //        //            a.DistanceCoverage >= model.MinDistanceCoverage &&
-        //        //            a.DistanceCoverage <= model.MaxDistanceCoverage)
-        //        .OrderBy(a => a.CreatedOn)
-        //        .ThenBy(a => a.Id)
-        //        .Skip(itemsToSkip)
-        //        .Take(ItemsPerPage);
-
-        //    return adverts;
-        //}
     }
 }

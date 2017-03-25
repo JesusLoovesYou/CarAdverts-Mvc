@@ -22,6 +22,7 @@ namespace CarAdverts.Web
             this.Bind(typeof(IEfDeletableRepository<>)).To(typeof(EfDeletableRepository<>));
 
             this.Bind<IAdvertService>().To<AdvertService>();
+            this.Bind<IFileService>().To<FileService>();
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
@@ -22,7 +21,7 @@ namespace CarAdverts.Web.Controllers
         private readonly IAdvertService advertService;
 
         public AdvertController(IAdvertService advertService)
-        {
+        { 
             Guard.WhenArgument(advertService, nameof(advertService)).IsNull().Throw();
             
             this.advertService = advertService;
@@ -129,7 +128,6 @@ namespace CarAdverts.Web.Controllers
             }
 
             var advert = this.advertService.GetById(id);
-
             if (advert == null)
             {
                 return HttpNotFound();

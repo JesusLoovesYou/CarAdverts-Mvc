@@ -223,14 +223,12 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Adminstrator\AdminstratorAreaRegistration.cs" />
-    <Compile Include="Areas\Adminstrator\Controllers\CRUD_AdvertController.cs" />
+    <Compile Include="Controllers\AjaxAdvertController.cs" />
     <Compile Include="AutoMapping\IgnoreRequiredExtensions.cs" />
     <Compile Include="AutoMapping\IHaveCustomMappings.cs" />
     <Compile Include="AutoMapping\IMapFrom.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertController.cs" />
-    <Compile Include="Controllers\AjaxAdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -246,7 +244,6 @@
     <Compile Include="Models\Contracts\IAdvertSearchViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
-    <Compile Include="Models\Advert\PageableAdvertsListViewModel.cs" />
     <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManufacturerViewModel.cs" />
@@ -265,8 +262,7 @@
     <Content Include="Scripts\_admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Adminstrator\Views\web.config" />
-    <Content Include="Areas\Adminstrator\Views\CRUD_Advert\Index.cshtml" />
+    <Content Include="Views\AjaxAdvert\Index.cshtml" />
     <None Include="Properties\PublishProfiles\car-adverts - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\car-adverts - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -318,12 +314,9 @@
     <Content Include="Views\Advert\Index.cshtml" />
     <Content Include="Views\Advert\Create.cshtml" />
     <Content Include="Views\Advert\Detail.cshtml" />
-    <Content Include="Views\AjaxAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Adminstrator\Models\" />
-    <Folder Include="Areas\Adminstrator\Views\Shared\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
