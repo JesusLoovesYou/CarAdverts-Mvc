@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col-md-4">
             @Html.LabelFor(m => m.CategoryId, new { @class = "control-label" })
-            @Html.DropDownList("CategoryId", ViewBag.Categories as SelectList, "All", new { @class = "form-control" })
+            @Html.DropDownList("CategoryId", ViewBag.Categories as SelectList, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
             @Html.LabelFor(m => m.ManufacturerId, new { @class = "control-label" })
@@ -52,11 +52,11 @@
         </div>
         <div class="col-md-4">
             @Html.LabelFor(m => m.MinYear, new { @class = "control-label" })
-            @Html.DropDownListFor(m => m.MinYear, ViewBag.Years as SelectList, "year", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.MinYear, ViewBag.Years as SelectList, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
             @Html.LabelFor(m => m.MaxYear, new { @class = "control-label" })
-            @Html.DropDownListFor(m => m.MaxYear, ViewBag.Years as SelectList, "year", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.MaxYear, ViewBag.Years as SelectList, new { @class = "form-control" })
         </div>
     </div>
     <hr />

@@ -31,7 +31,7 @@ namespace CarAdverts.Web.Controllers
             var manufacturers = provider.Manufacturers.All().ProjectTo<ManufacturerViewModel>().ToList();
             var vehicleModels = provider.VehicleModels.All().ProjectTo<VehicleModelViewModel>().ToList();
             var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
-            var years = this.generator.NumbersGenerator(1970, DateTime.Now.Year);
+            var years = this.generator.GenerateSecuentialNumbers(1970, DateTime.Now.Year);
 
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
             ViewBag.Manufacturers = new SelectList(manufacturers, "Id", "Name");

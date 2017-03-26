@@ -4,7 +4,7 @@ namespace CarAdverts.Common.Generator
 {
     public class Generator : IGenerator
     {
-        public IEnumerable<int> NumbersGenerator(int min, int max)
+        public IEnumerable<int> GenerateSecuentialNumbers(int min, int max)
         {
             if (min > max)
             {

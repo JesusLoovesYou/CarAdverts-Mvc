@@ -1,4 +1,5 @@
-﻿using CarAdverts.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using CarAdverts.Models;
 using CarAdverts.Web.AutoMapping;
 
 namespace CarAdverts.Web.Models
@@ -12,7 +13,7 @@ namespace CarAdverts.Web.Models
         public string ContentType { get; set; }
 
         public byte[] Content { get; set; }
-
+        
         public FileType FileType { get; set; }
 
     }

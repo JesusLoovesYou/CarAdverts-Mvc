@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonTests\GeneratorTests\Generator_GenerateSecuential_Numbers_Should.cs" />
     <Compile Include="DataTests\ContexTestst\CarAdvertsSystemDbContext_ConstuktorShould.cs" />
     <Compile Include="DataTests\MigrationsTests\Configuratio_ConstuctorShould.cs" />
     <Compile Include="DataTests\Mocks\MockDbModel.cs" />
@@ -159,6 +160,40 @@
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Index_Should.cs" />
     <Compile Include="WebTests\ControllersTests\HomeController\HomeController_Constructor_Should.cs" />
     <Compile Include="WebTests\ControllersTests\HomeController\HomeController_Index_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_CityId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_Description_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_DistanceCoverage_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_FilesToBeUploaded.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_Power_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_Price_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_Title_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_VehicleModelId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertInputViewModelsTests\AdvertInputViewModel_Year_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_CategoryId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_CityId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_ManufacturerId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MaxDistanceCoverage_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MaxPower_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MaxPrice_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MaxYear_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MinDistanceCoverage_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MinPower_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MinPrice_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_MInYear_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\AdvertViewModels\AdvertSearchViewModelsTests\AdvertSearchViewModel_VehicleModelId_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\CategoryViewModel\CategoryViewModel_Id_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\CategoryViewModel\CategoryViewModel_Name_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\CityViewModelTests\CityViewModel_Id_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\CityViewModelTests\CityViewModel_Name_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\FileViewModelTests\FileViewModel_ContentType_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\FileViewModelTests\FileViewModel_Content_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\FileViewModelTests\FileViewModel_FileType_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\FileViewModelTests\FileViewModel_Id_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\FileViewModelTests\FileViewModel_Name_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\ManufacturerViewModelTests\ManufacturerViewModel_Id_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\ManufacturerViewModelTests\ManufacturerViewModel_Name_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\VehicleModelViewModelTests\VehicleModelViewModel_Id_Should.cs" />
+    <Compile Include="WebTests\ViewModelsTests\VehicleModelViewModelTests\VehicleModelViewModel_Name_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -170,7 +205,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ControlersTests\" />
     <Folder Include="DataTests\RepositoriesTests\DeleatableEntityRepositoryTests\" />
   </ItemGroup>
   <ItemGroup>
