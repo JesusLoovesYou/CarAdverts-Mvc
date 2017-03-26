@@ -6,7 +6,7 @@ using CarAdverts.Services;
 namespace CarAdvertsSystem.UnitTests.ServicesTests.AdvertServiceTests
 {
     [TestFixture]
-    public class AdvertService_ConstructorShould
+    public class AdvertService_Constructor_Should
     {
         [Test]
         public void ThrowArgumentNullExeption_IfParameterIsNull()

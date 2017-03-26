@@ -103,27 +103,44 @@ namespace CarAdverts.Services
             }
         }
 
-        public IQueryable<Advert> Search(         //////////// da go iztestvam
-                int vehicleModelId,
-                int cityId,
-                int minYear,
-                int maxYear,
-                decimal minPrice,
-                decimal maxPrice,
-                int minPower,
-                int maxPower,
-                int minDistanceCoverage,
-                int maxDistanceCoverage)
+        /// <summary>
+        /// Search adverts from database.
+        /// </summary>
+        /// <param name="vehicleModelId"></param>
+        /// <param name="cityId"></param>
+        /// <param name="minYear"></param>
+        /// <param name="maxYear"></param>
+        /// <param name="minPrice"></param>
+        /// <param name="maxPrice"></param>
+        /// <param name="minPower"></param>
+        /// <param name="maxPower"></param>
+        /// <param name="minDistanceCoverage"></param>
+        /// <param name="maxDistanceCoverage"></param>
+        /// <returns>IQuearable from Adverts.</Adverts></returns>
+        public IQueryable<Advert> Search(
+                int? vehicleModelId,
+                int? cityId,
+                int? minYear,
+                int? maxYear,
+                decimal? minPrice,
+                decimal? maxPrice,
+                int? minPower,
+                int? maxPower,
+                int? minDistanceCoverage,
+                int? maxDistanceCoverage)
         {
             var adverts = this.efProvider.Adverts
-                .All();
-            //.Where(a => a.VehicleModelId == model.VehicleModelId &&
-            //            a.CityId == model.CityId &&
-            //            a.Year >= model.MinYear && a.Year <= model.MaxPower &&
-            //            a.Price >= model.MinPrice && a.Price <= model.MaxPrice &&
-            //            a.Power >= model.MinPower && a.Power <= model.MaxPower &&
-            //            a.DistanceCoverage >= model.MinDistanceCoverage &&
-            //            a.DistanceCoverage <= model.MaxDistanceCoverage)
+                .All()
+                .Where(a => a.VehicleModelId == (vehicleModelId ?? a.VehicleModelId) &&
+                       a.CityId == (cityId ?? a.CityId) &&
+                       a.Year >= (minYear ?? a.Year) && 
+                       a.Year <= (maxYear ?? a.Year) &&
+                       a.Price >= (minPrice ?? a.Price) && 
+                       a.Price <= (maxPrice ?? a.Price) &&
+                       a.Power >= (minPower ?? a.Power) && 
+                       a.Power <= (maxPower ?? a.Power) &&
+                       a.DistanceCoverage >= (minDistanceCoverage ?? a.DistanceCoverage) &&
+                       a.DistanceCoverage <= (maxDistanceCoverage ?? a.DistanceCoverage));
 
             return adverts;
         }
