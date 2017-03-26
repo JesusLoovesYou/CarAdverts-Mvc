@@ -79,9 +79,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             // Act and Assert
             mockedAdvertService.Verify(a => a.Search(
-                                                    It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(),
-                                                    It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>(),
-                                                    It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+                                                    It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(),
+                                                    It.IsAny<int?>(), It.IsAny<decimal?>(), It.IsAny<decimal?>(),
+                                                    It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>()), Times.Once);
         }
         
         [Test]
@@ -97,9 +97,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
 
             // Act and Assert
             mockedAdvertService.Verify(a => a.Search(
-                                                    It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(),
-                                                    It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>(),
-                                                    It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Never);
+                                                    It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(),
+                                                    It.IsAny<int?>(), It.IsAny<decimal?>(), It.IsAny<decimal?>(),
+                                                    It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>()), Times.Never);
         }
         
         [Test]
@@ -128,9 +128,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         {
             // Arrange
             var mockedAdvertService = new Mock<IAdvertService>();
-            mockedAdvertService.Setup(a => a.Search(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(),
-                It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).Throws(new Exception());
+            mockedAdvertService.Setup(a => a.Search(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(),
+                It.IsAny<int?>(), It.IsAny<decimal?>(), It.IsAny<decimal?>(),
+                It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>())).Throws(new Exception());
 
             var advertController = new AdvertController(mockedAdvertService.Object);
 
@@ -146,9 +146,9 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         {
             // Arrange
             var mockedAdvertService = new Mock<IAdvertService>();
-            mockedAdvertService.Setup(a => a.Search(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(),
-                It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).Throws(new Exception());
+            mockedAdvertService.Setup(a => a.Search(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(),
+                It.IsAny<int?>(), It.IsAny<decimal?>(), It.IsAny<decimal?>(),
+                It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>())).Throws(new Exception());
 
             var advertController = new AdvertController(mockedAdvertService.Object);
             

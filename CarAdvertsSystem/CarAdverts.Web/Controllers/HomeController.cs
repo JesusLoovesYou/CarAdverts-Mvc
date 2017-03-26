@@ -6,6 +6,7 @@ using Bytes2you.Validation;
 using CarAdverts.Common.Generator;
 using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Web.Models;
+using CarAdverts.Web.Models.Advert;
 
 namespace CarAdverts.Web.Controllers
 {
@@ -30,7 +31,16 @@ namespace CarAdverts.Web.Controllers
             var categories = provider.Categories.All().ProjectTo<CategoryViewModel>().ToList();
             var manufacturers = provider.Manufacturers.All().ProjectTo<ManufacturerViewModel>().ToList();
             var vehicleModels = provider.VehicleModels.All().ProjectTo<VehicleModelViewModel>().ToList();
-            var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
+            //var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
+            var cities = provider.Cities
+                .All()
+                .Select(c => new CityViewModel()
+                                {
+                                    Id = c.Id,
+                                    Name = c.Name
+                                })
+                .ToList();
+
             var years = this.generator.GenerateSecuentialNumbers(1970, DateTime.Now.Year);
 
             ViewBag.Categories = new SelectList(categories, "Id", "Name");

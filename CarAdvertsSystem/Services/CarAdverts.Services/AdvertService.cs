@@ -1,4 +1,5 @@
-﻿using CarAdverts.Data.Providers.EfProvider;
+﻿using System;
+using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Models;
 using CarAdverts.Services.Contracts;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace CarAdverts.Services
             {
                 this.AddUploadedFilesToAdvert(advert, uploadedFiles);
             }
-            
+
             this.efProvider.Adverts.Add(advert);
             this.efProvider.SaveChanges();
         }
@@ -129,20 +130,58 @@ namespace CarAdverts.Services
                 int? minDistanceCoverage,
                 int? maxDistanceCoverage)
         {
+            ValidateIntegerMinAndMaxNumbers(ref minYear, ref maxYear);
+
+            ValidateDecimalMinAndMaxNumbers(ref minPrice, ref maxPrice);
+
+            ValidateIntegerMinAndMaxNumbers(ref minPower, ref maxPower);
+
+            ValidateIntegerMinAndMaxNumbers(ref minDistanceCoverage, ref maxDistanceCoverage);
+
             var adverts = this.efProvider.Adverts
                 .All()
                 .Where(a => a.VehicleModelId == (vehicleModelId ?? a.VehicleModelId) &&
                        a.CityId == (cityId ?? a.CityId) &&
-                       a.Year >= (minYear ?? a.Year) && 
+                       a.Year >= (minYear ?? a.Year) &&
                        a.Year <= (maxYear ?? a.Year) &&
-                       a.Price >= (minPrice ?? a.Price) && 
+                       a.Price >= (minPrice ?? a.Price) &&
                        a.Price <= (maxPrice ?? a.Price) &&
-                       a.Power >= (minPower ?? a.Power) && 
+                       a.Power >= (minPower ?? a.Power) &&
                        a.Power <= (maxPower ?? a.Power) &&
                        a.DistanceCoverage >= (minDistanceCoverage ?? a.DistanceCoverage) &&
                        a.DistanceCoverage <= (maxDistanceCoverage ?? a.DistanceCoverage));
 
             return adverts;
+        }
+        
+        /// <summary>
+        /// Swap two decimal nulable numbers.
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        private void ValidateDecimalMinAndMaxNumbers(ref decimal? min, ref decimal? max)
+        {
+            if (min != null && max != null && min > max)
+            {
+                var temp = min;
+                min = max;
+                max = temp;
+            }
+        }
+
+        /// <summary>
+        /// Swap two integer nulable numbers.
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        private void ValidateIntegerMinAndMaxNumbers(ref int? min, ref int? max)
+        {
+            if (min != null && max != null && min > max)
+            {
+                var temp = min;
+                min = max;
+                max = temp;
+            }
         }
     }
 }

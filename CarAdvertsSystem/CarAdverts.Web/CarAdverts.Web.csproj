@@ -226,6 +226,8 @@
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\AjaxAdvertController.cs" />
     <Compile Include="Areas\Administrator\Controllers\TestController.cs" />
+    <Compile Include="Areas\User\Controllers\CRUDAdvertController.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="AutoMapping\IgnoreRequiredExtensions.cs" />
     <Compile Include="AutoMapping\IHaveCustomMappings.cs" />
     <Compile Include="AutoMapping\IMapFrom.cs" />
@@ -273,6 +275,9 @@
     <Content Include="Areas\Administrator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administrator\Views\Test\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\AjaxAdvert\Index.cshtml" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\CRUDAdvert\Create.cshtml" />
     <None Include="Properties\PublishProfiles\car-adverts - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\car-adverts - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -322,13 +327,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Advert\Index.cshtml" />
-    <Content Include="Views\Advert\Create.cshtml" />
     <Content Include="Views\Advert\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Shared\" />
+    <Folder Include="Areas\User\Models\" />
+    <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>

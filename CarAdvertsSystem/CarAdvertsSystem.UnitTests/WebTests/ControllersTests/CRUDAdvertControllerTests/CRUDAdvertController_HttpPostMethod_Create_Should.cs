@@ -1,23 +1,22 @@
-﻿using NUnit.Framework;
-using Moq;
-using CarAdverts.Data.Providers.EfProvider;
-using CarAdverts.Services.Contracts;
-using CarAdverts.Web.Controllers;
-using TestStack.FluentMVCTesting;
-using CarAdverts.Web.Models.Advert;
+﻿using System;
 using System.Collections.Generic;
-using System.Web;
-using CarAdverts.Models;
-using System.Security.Principal;
 using System.Security.Claims;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System;
+using CarAdverts.Models;
+using CarAdverts.Services.Contracts;
+using CarAdverts.Web.Areas.User.Controllers;
+using CarAdverts.Web.Models.Advert;
+using Moq;
+using NUnit.Framework;
+using TestStack.FluentMVCTesting;
 
-namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerTests
+namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControllerTests
 {
     [TestFixture]
-    public class AdvertController_HttpPostMethod_Create_Should
+    public class CRUDAdvertController_HttpPostMethod_Create_Should
     {
         [Test]
         public void RedirectToDefaultViewWithCorrectParameterModel_WhenOcuredExceptionOfCreatingInDb()
@@ -37,7 +36,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -75,7 +74,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -103,7 +102,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -118,7 +117,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
             
             var advertService = new Mock<IAdvertService>();
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
 
             advertController.ModelState.AddModelError("test", "test");
 
@@ -158,7 +157,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -186,7 +185,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -214,14 +213,16 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new AdvertController(advertService.Object);
+            var advertController = new CRUDAdvertController(advertService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
             advertController.Create(model, uploadedFiles);
 
             // Assert
-            advertController.WithCallTo(a => a.Create(model, uploadedFiles)).ShouldRedirectTo("/");
+            advertController
+                .WithCallTo(a => a.Create(model, uploadedFiles))
+                .ShouldRedirectTo<CarAdverts.Web.Controllers.HomeController>(typeof(CarAdverts.Web.Controllers.HomeController).GetMethod("Index"));
         }
     }
 }

@@ -28,9 +28,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Test", "Index", "Test", new { area = "Administrator" }, null)</li>
                     <li>@Html.ActionLink("AjaxAdvert", "Index", "AjaxAdvert", new { area = "Administrator" }, null)</li>
+                    <li>@Html.ActionLink("UserCreateAdvert", "Create", "CRUDAdvert", new { area = "User" }, null)</li>
+
                     @if (this.User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Create Advert", "Create", "Advert")</li>
+                        @*<li>@Html.ActionLink("Create Advert", "Create", "Advert")</li>*@
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

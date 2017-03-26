@@ -71,55 +71,6 @@ namespace CarAdverts.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Create(AdvertInputViewModel model, IEnumerable<HttpPostedFileBase> uploadedFiles)
-        {
-            Guard.WhenArgument(model, nameof(model)).IsNull().Throw();
-
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-            
-            var advert = new Advert()
-            {
-                Title = model.Title,
-                VehicleModelId = model.VehicleModelId,
-                UserId = this.User.Identity.GetUserId(),
-                Year = model.Year,
-                Price = model.Price,
-                Power = model.Power,
-                DistanceCoverage = model.DistanceCoverage,
-                CityId = model.CityId,
-                Description = model.Description,
-                CreatedOn = DateTime.Now
-            };
-            
-            try
-            {
-                this.advertService.CreateAdvert(advert, uploadedFiles);
-            }
-            catch (Exception)
-            {
-                this.TempData["Notification"] = "Exeption.";
-                return View(model);
-            }
-            
-
-            this.TempData["Notification"] = "Succesfull advert creation.";
-
-            return Redirect("/");
-        }
-
-        [HttpGet]
         public ActionResult Detail(int? id)
         {
             if (id == null)
