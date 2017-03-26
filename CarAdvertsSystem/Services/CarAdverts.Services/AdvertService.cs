@@ -37,7 +37,7 @@ namespace CarAdverts.Services
             return advert;
         }
 
-        public void Delete(Advert advert)        //////////// da go iztestvam
+        public void Delete(Advert advert)
         {
             Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
 
@@ -45,19 +45,22 @@ namespace CarAdverts.Services
             this.efProvider.SaveChanges();
         }
 
-        public void Delete(int id)        //////////// da go iztestvam
+        public void Delete(int id)
         {
             this.efProvider.Adverts.Delete(id);
             this.efProvider.SaveChanges();
         }
 
-        public void Update(Advert advert)      //////////// da go iztestvam
+        public void Update(Advert advert)
         {
+            Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();
+
             this.efProvider.Adverts.Update(advert);
             this.efProvider.SaveChanges();
         }
 
 
+        /// da go iztestvam
         public void CreateAdvert(Advert advert, IEnumerable<HttpPostedFileBase> uploadedFiles)
         {
             Guard.WhenArgument(advert, nameof(advert)).IsNull().Throw();

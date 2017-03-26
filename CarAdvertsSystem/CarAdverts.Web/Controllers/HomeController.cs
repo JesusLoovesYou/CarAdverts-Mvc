@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
+using Bytes2you.Validation;
+using CarAdverts.Common.Generator;
 using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Web.Models;
 
@@ -12,9 +13,15 @@ namespace CarAdverts.Web.Controllers
     {
         private IEfCarAdvertsDataProvider provider;
 
-        public HomeController(IEfCarAdvertsDataProvider provider)
+        private IGenerator generator;
+
+        public HomeController(IEfCarAdvertsDataProvider provider, IGenerator generator)
         {
+            Guard.WhenArgument(provider, nameof(provider)).IsNull().Throw();
+            Guard.WhenArgument(generator, nameof(generator)).IsNull().Throw();
+
             this.provider = provider;
+            this.generator = generator;
         }
 
         [HttpGet]
@@ -24,7 +31,7 @@ namespace CarAdverts.Web.Controllers
             var manufacturers = provider.Manufacturers.All().ProjectTo<ManufacturerViewModel>().ToList();
             var vehicleModels = provider.VehicleModels.All().ProjectTo<VehicleModelViewModel>().ToList();
             var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
-            var years = this.NumbersGenerator(1970, DateTime.Now.Year);
+            var years = this.generator.NumbersGenerator(1970, DateTime.Now.Year);
 
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
             ViewBag.Manufacturers = new SelectList(manufacturers, "Id", "Name");
@@ -48,25 +55,5 @@ namespace CarAdverts.Web.Controllers
 
             return View();
         }
-
-        private IEnumerable<int> NumbersGenerator(int min, int max)
-        {
-            if (min > max)
-            {
-                var temp = min;
-                min = max;
-                max = temp;
-            }
-
-            var numbers = new List<int>();
-
-            for (int i = max; i >= min; i--)
-            {
-                numbers.Add(i);
-            }
-
-            return numbers;
-        }
-
     }
 }

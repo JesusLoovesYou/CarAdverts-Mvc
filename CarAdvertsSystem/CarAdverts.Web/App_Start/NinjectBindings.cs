@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using CarAdverts.Common.Generator;
 using CarAdverts.Data;
 using CarAdverts.Data.Contracts;
 using CarAdverts.Data.Providers.EfProvider;
@@ -23,6 +24,8 @@ namespace CarAdverts.Web
 
             this.Bind<IAdvertService>().To<AdvertService>();
             this.Bind<IFileService>().To<FileService>();
+
+            this.Bind<IGenerator>().To<Generator>();
         }
     }
 }

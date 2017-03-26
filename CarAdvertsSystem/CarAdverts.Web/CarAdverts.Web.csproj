@@ -223,7 +223,9 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AjaxAdvertController.cs" />
+    <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrator\Controllers\AjaxAdvertController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\TestController.cs" />
     <Compile Include="AutoMapping\IgnoreRequiredExtensions.cs" />
     <Compile Include="AutoMapping\IHaveCustomMappings.cs" />
     <Compile Include="AutoMapping\IMapFrom.cs" />
@@ -267,7 +269,10 @@
     <Content Include="Scripts\_admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Views\AjaxAdvert\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\web.config" />
+    <Content Include="Areas\Administrator\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administrator\Views\Test\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\AjaxAdvert\Index.cshtml" />
     <None Include="Properties\PublishProfiles\car-adverts - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\car-adverts - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -322,6 +327,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administrator\Models\" />
+    <Folder Include="Areas\Administrator\Views\Shared\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
@@ -333,6 +340,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarAdverts.Common\CarAdverts.Common.csproj">
+      <Project>{c116a0da-7d57-496b-a0e0-22c07f937a93}</Project>
+      <Name>CarAdverts.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarAdverts.Contracts\CarAdverts.Contracts.csproj">
       <Project>{B4DFBE9A-1622-4AB2-B587-7ED2539729D8}</Project>
       <Name>CarAdverts.Contracts</Name>

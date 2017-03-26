@@ -65,7 +65,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             // Act and Assert
             advertController
                 .WithCallTo(x => x.Index(new AdvertSearchViewModel(), 1))
-                .ShouldRedirectTo<HomeController>(h => h.Index());
+                .ShouldRedirectTo<CarAdverts.Web.Controllers.HomeController>(h => h.Index());
         }
         
         [Test]
@@ -155,7 +155,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
             // Act and Assert
             advertController
                 .WithCallTo(x => x.Index(new AdvertSearchViewModel(), 1))
-                .ShouldRedirectTo<HomeController>(h => h.Index());
+                .ShouldRedirectTo<CarAdverts.Web.Controllers.HomeController>(h => h.Index());
         }
     }
 }

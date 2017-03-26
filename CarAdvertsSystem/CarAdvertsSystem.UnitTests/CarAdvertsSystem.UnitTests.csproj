@@ -137,8 +137,10 @@
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_All_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_ConstructorShould.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_CreateAdvert_Should.cs" />
+    <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_DeleteWithIdParameter_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_Delete_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_GetById_Should.cs" />
+    <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_Update_Should.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_ConstructorShould.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_GetByIdShould.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertControllert_Constructor_Sould.cs" />
@@ -146,8 +148,17 @@
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpGetMethod_Create_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_HttpPostMethod_Create_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_Index_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_Add_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_Delete_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_GetById_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_Index_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_Constuctor_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_List_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\AjaxAdvertController\AjaxAdvertController_Updata_Should.cs" />
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Constructor_Should.cs" />
     <Compile Include="WebTests\ControllersTests\FileControllerTests\FileController_Index_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\HomeController\HomeController_Constructor_Should.cs" />
+    <Compile Include="WebTests\ControllersTests\HomeController\HomeController_Index_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

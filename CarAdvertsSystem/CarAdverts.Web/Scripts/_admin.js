@@ -4,13 +4,13 @@ $(document).ready(function () {
 });
 
 //Load Data function  
-function loadData(filter) {
+function loadData() {
     //if (filter === undefined) {
     //    filter = '';
     //}
 
     $.ajax({
-        url: "/AjaxAdvert/List/" + filter,
+        url: "/AjaxAdvert/List",
         type: "GET",
         contentType: "application/json;charset=utf-8",
         dataType: "json",

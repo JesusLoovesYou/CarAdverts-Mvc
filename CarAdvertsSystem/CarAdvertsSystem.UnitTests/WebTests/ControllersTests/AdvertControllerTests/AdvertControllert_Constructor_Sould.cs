@@ -21,7 +21,7 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.AdvertControllerT
         }
         
         [Test]
-        public void CreateInstanceOfAdvertService_WhenAdvertServiceParameterIsNotNull()
+        public void CreateInstanceOfAdvertController_WhenAdvertServiceParameterIsNotNull()
         {
             // Arrange
             var advertService = new Mock<IAdvertService>();
