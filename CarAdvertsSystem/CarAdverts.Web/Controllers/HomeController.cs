@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
@@ -31,15 +32,7 @@ namespace CarAdverts.Web.Controllers
             var categories = provider.Categories.All().ProjectTo<CategoryViewModel>().ToList();
             var manufacturers = provider.Manufacturers.All().ProjectTo<ManufacturerViewModel>().ToList();
             var vehicleModels = provider.VehicleModels.All().ProjectTo<VehicleModelViewModel>().ToList();
-            //var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
-            var cities = provider.Cities
-                .All()
-                .Select(c => new CityViewModel()
-                                {
-                                    Id = c.Id,
-                                    Name = c.Name
-                                })
-                .ToList();
+            var cities = provider.Cities.All().ProjectTo<CityViewModel>().ToList();
 
             var years = this.generator.GenerateSecuentialNumbers(1970, DateTime.Now.Year);
 
@@ -48,20 +41,6 @@ namespace CarAdverts.Web.Controllers
             ViewBag.VehicleModels = new SelectList(vehicleModels, "Id", "Name");
             ViewBag.Cities = new SelectList(cities, "Id", "Name");
             ViewBag.Years = new SelectList(years, "year");
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }

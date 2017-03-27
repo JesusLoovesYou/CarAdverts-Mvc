@@ -17,9 +17,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.VehicleModelId, new { @class = "col-md-2 control-label" })
-        <div class="col-md-5">
-            @Html.EditorFor(m => m.VehicleModelId, new { @class = "form-control" })
-        </div>
+        @Html.DropDownList("VehicleModelId", ViewBag.VehicleModels as SelectList, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Year, new { @class = "col-md-2 control-label" })
@@ -47,9 +45,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.CityId, new { @class = "col-md-2 control-label" })
-        <div class="col-md-5">
-            @Html.EditorFor(m => m.CityId, new { @class = "form-control" })
-        </div>
+        @Html.DropDownList("CityId", ViewBag.Cities as SelectList, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })

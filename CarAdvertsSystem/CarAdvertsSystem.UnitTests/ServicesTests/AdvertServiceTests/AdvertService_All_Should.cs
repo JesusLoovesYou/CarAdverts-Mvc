@@ -54,8 +54,5 @@ namespace CarAdvertsSystem.UnitTests.ServicesTests.AdvertServiceTests
             // Assert
             Assert.AreEqual(result, expectedAdvert);
         }
-
-
-
     }
 }

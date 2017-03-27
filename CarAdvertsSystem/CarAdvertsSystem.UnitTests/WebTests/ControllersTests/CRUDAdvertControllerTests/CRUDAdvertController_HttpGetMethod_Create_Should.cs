@@ -14,7 +14,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
         {
             // Arrange
             var advertService = new Mock<IAdvertService>();
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
+
 
             // Act
             advertController.WithCallTo(x => x.Create()).ShouldRenderDefaultView();

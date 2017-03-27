@@ -19,9 +19,38 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
         {
             // Arrange
             IAdvertService advertService = null;
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new CRUDAdvertController(advertService));
+            Assert.Throws<ArgumentNullException>(() => 
+                new CRUDAdvertController(advertService, cityService.Object, modelService.Object));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenCityServiceParameterIsNull()
+        {
+            // Arrange
+            var advertService = new Mock<IAdvertService>();
+            ICityService cityService = null;
+            var modelService = new Mock<IVehicleModelService>();
+
+            // Act and Assert
+            Assert.Throws<ArgumentNullException>(() =>
+                new CRUDAdvertController(advertService.Object, cityService, modelService.Object));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenAVehicleModelServiceParameterIsNull()
+        {
+            // Arrange
+            var advertService = new Mock<IAdvertService>();
+            var cityService = new Mock<ICityService>();
+            IVehicleModelService modelService = null;
+
+            // Act and Assert
+            Assert.Throws<ArgumentNullException>(() =>
+                new CRUDAdvertController(advertService.Object, cityService.Object, modelService));
         }
 
         [Test]
@@ -29,9 +58,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
         {
             // Arrange
             var advertService = new Mock<IAdvertService>();
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
 
             // Act
-            var crudAdvertController = new CRUDAdvertController(advertService.Object);
+            var crudAdvertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
 
             // Act and Assert
             Assert.That(crudAdvertController, Is.Not.Null);

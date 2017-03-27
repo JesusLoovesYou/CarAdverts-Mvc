@@ -143,8 +143,12 @@
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_GetById_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_Search_Should.cs" />
     <Compile Include="ServicesTests\AdvertServiceTests\AdvertService_Update_Should.cs" />
+    <Compile Include="ServicesTests\CityServiceTests\CityService_All_Should.cs" />
+    <Compile Include="ServicesTests\CityServiceTests\CityService_Constructor_Should.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_ConstructorShould.cs" />
     <Compile Include="ServicesTests\FileServceTests\FileService_GetByIdShould.cs" />
+    <Compile Include="ServicesTests\VehicleModelServiceTests\VehicleModel_All_Should.cs" />
+    <Compile Include="ServicesTests\VehicleModelServiceTests\VehicleModel_Constuctor_Should.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertControllert_Constructor_Sould.cs" />
     <Compile Include="WebTests\ControllersTests\AdvertControllerTests\AdvertController_Detail_Should.cs" />
     <Compile Include="WebTests\ControllersTests\CRUDAdvertControllerTests\CRUDAdvertController_Constructor_Should.cs" />

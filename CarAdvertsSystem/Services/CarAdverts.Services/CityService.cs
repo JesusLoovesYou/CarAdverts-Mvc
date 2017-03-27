@@ -1,30 +1,27 @@
-﻿using Bytes2you.Validation;
+﻿using System.Linq;
+using Bytes2you.Validation;
 using CarAdverts.Data.Providers.EfProvider;
 using CarAdverts.Models;
 using CarAdverts.Services.Contracts;
 
 namespace CarAdverts.Services
 {
-    public class FileService : IFileService
+    public class CityService : ICityService
     {
         private IEfCarAdvertsDataProvider efProvider;
 
-        public FileService(IEfCarAdvertsDataProvider efProvider)
+        public CityService(IEfCarAdvertsDataProvider efProvider)
         {
             Guard.WhenArgument(efProvider, nameof(efProvider)).IsNull().Throw();
 
             this.efProvider = efProvider;
         }
 
-        public File GetById(int? id)
+        public IQueryable<City> All()
         {
-            if (id == null)
-            {
-                return null;
-            }
+            var cities = this.efProvider.Cities.All();
 
-            var file = this.efProvider.Files.GetById(id);
-            return file;
+            return cities;
         }
     }
 }

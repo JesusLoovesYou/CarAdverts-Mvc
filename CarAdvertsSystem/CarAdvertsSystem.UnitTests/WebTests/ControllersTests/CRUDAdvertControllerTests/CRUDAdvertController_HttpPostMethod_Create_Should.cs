@@ -37,7 +37,10 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+            
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -75,7 +78,10 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>())).Throws(new Exception());
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -103,7 +109,10 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act and Assert
@@ -118,7 +127,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             IEnumerable<HttpPostedFileBase> uploadedFiles = null;
             
             var advertService = new Mock<IAdvertService>();
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
+
 
             advertController.ModelState.AddModelError("test", "test");
 
@@ -158,7 +171,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
+
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -186,7 +203,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
+
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act
@@ -214,7 +235,11 @@ namespace CarAdvertsSystem.UnitTests.WebTests.ControllersTests.CRUDAdvertControl
             var advertService = new Mock<IAdvertService>();
             advertService.Setup(a => a.CreateAdvert(It.IsAny<Advert>(), It.IsAny<IEnumerable<HttpPostedFileBase>>()));
 
-            var advertController = new CRUDAdvertController(advertService.Object);
+            var cityService = new Mock<ICityService>();
+            var modelService = new Mock<IVehicleModelService>();
+
+            var advertController = new CRUDAdvertController(advertService.Object, cityService.Object, modelService.Object);
+
             advertController.ControllerContext = new ControllerContext(context.Object, new RouteData(), advertController);
 
             // Act

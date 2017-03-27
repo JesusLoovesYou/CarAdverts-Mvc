@@ -25,6 +25,8 @@ namespace CarAdverts.Web
 
             this.Bind<IAdvertService>().To<AdvertService>();
             this.Bind<IFileService>().To<FileService>();
+            this.Bind<IVehicleModelService>().To<VehicleModelService>();
+            this.Bind<ICityService>().To<CityService>();
 
             this.Bind<IGenerator>().To<Generator>();
         }
