@@ -276,6 +276,12 @@
     <Content Include="Images\Cars\02.jpg" />
     <Content Include="Images\Cars\03.jpg" />
     <Content Include="Images\Cars\04.jpg" />
+    <Content Include="Images\ErrorPages\400.html" />
+    <Content Include="Images\ErrorPages\400.jpg" />
+    <Content Include="Images\ErrorPages\404.html" />
+    <Content Include="Images\ErrorPages\404.jpeg" />
+    <Content Include="Images\ErrorPages\500.html" />
+    <Content Include="Images\ErrorPages\500.jpg" />
     <Content Include="Scripts\bootstrap-carousel.js" />
     <Content Include="Scripts\_admin.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -301,6 +307,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="400.html" />
+    <Content Include="404.html" />
+    <Content Include="500.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
