@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CarAdverts.Web.Areas.User.Models;
 using CarAdverts.Web.Models;
 using CarAdverts.Web.Models.Advert;
 using NUnit.Framework;

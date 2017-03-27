@@ -13,12 +13,15 @@ namespace CarAdverts.Web
             routes.MapRoute(
                 name: "Display advert",
                 url: "adverts/{id}/{url}",
-                defaults: new { controller = "Advert", action = "Detail" });
+                defaults: new { controller = "Advert", action = "Detail", url = UrlParameter.Optional },
+                namespaces: new[] { "CarAdverts.Web.Controllers" }
+            );
 
             routes.MapRoute(
                 name: "Adverts list",
                 url: "adverts/{model}/{id}",
-                defaults: new { controller = "Advert", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Advert", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "CarAdverts.Web.Controllers" }
             );
 
             routes.MapRoute(

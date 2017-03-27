@@ -3,33 +3,14 @@
     ViewBag.Title = "Find your dreamt-of vehicle";
 }
 
-<div id="myCarousel" class="carousel">
-    <!-- Carousel items -->
-    <div class="carousel-inner">
-        <div class="active item">
-            <img src="~/Images/Cars/01.jpg" alt="Alternate Text" />
-        </div>
-        <div class="item">
-            <img src="~/Images/Cars/02.jpg" alt="Alternate Text" />
-        </div>
-        <div class="item">
-            <img src="~/Images/Cars/03.jpg" alt="Alternate Text" />
-        </div>
-        <div class="item">
-            <img src="~/Images/Cars/04.jpg" alt="Alternate Text" />
-        </div>
-    </div>
-    <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
+@Html.Partial("_CarouselPartial");
 
 <h1>@ViewBag.Title</h1>
 
 @using (Html.BeginForm("Index", "Advert", new { id = 1 }, FormMethod.Get, new { @class = "form-horizontal search-form", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
     <div class="row">
         <div class="col-md-4">
             @Html.LabelFor(m => m.CategoryId, new { @class = "control-label" })
@@ -67,12 +48,14 @@
                 @Html.LabelFor(m => m.MinPrice, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MinPrice, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MinPrice)
                 </div>
             </div>
             <div class="row">
                 @Html.LabelFor(m => m.MaxPrice, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MaxPrice, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MaxPrice)
                 </div>
             </div>
         </div>
@@ -81,12 +64,14 @@
                 @Html.LabelFor(m => m.MinPower, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MinPower, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MinPower)
                 </div>
             </div>
             <div class="row">
                 @Html.LabelFor(m => m.MaxPower, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MaxPower, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MaxPower)
                 </div>
             </div>
         </div>
@@ -95,12 +80,14 @@
                 @Html.LabelFor(m => m.MinDistanceCoverage, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MinDistanceCoverage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MinDistanceCoverage)
                 </div>
             </div>
             <div class="row">
                 @Html.LabelFor(m => m.MaxDistanceCoverage, new { @class = "col-md-4 control-label" })
                 <div class="col-md-8">
                     @Html.EditorFor(m => m.MaxDistanceCoverage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MaxDistanceCoverage)
                 </div>
             </div>
         </div>
@@ -113,10 +100,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-<script>
-    $('.carousel').carousel({
-        interval: 4000
-    });
-    $('.carousel').carousel('cycle');
-</script>

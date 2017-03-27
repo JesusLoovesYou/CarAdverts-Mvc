@@ -1,0 +1,7 @@
+﻿@model decimal
+    
+@{
+    IFormatProvider formatProfider = 
+        new System.Globalization.CultureInfo("bg-BG");
+    <span class="currency">@Model.ToString("C", formatProfider)</span>
+}

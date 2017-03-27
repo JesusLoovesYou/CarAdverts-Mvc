@@ -8,6 +8,7 @@ using CarAdverts.Data.Repositories.EfRepository.Contracts;
 using Ninject.Modules;
 using CarAdverts.Services.Contracts;
 using CarAdverts.Services;
+using Ninject.Web.Common;
 
 namespace CarAdverts.Web
 {

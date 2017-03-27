@@ -1,4 +1,5 @@
-﻿using CarAdverts.Web.Models.Advert;
+﻿using CarAdverts.Web.Areas.User.Models;
+using CarAdverts.Web.Models.Advert;
 using NUnit.Framework;
 
 namespace CarAdvertsSystem.UnitTests.WebTests.ViewModelsTests.AdvertViewModels.AdvertInputViewModelsTests

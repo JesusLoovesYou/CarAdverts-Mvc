@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using CarAdverts.Web.AutoMapping;
+using Ganss.XSS;
 
 namespace CarAdverts.Web.Models.Advert
 {
@@ -11,12 +13,15 @@ namespace CarAdverts.Web.Models.Advert
     {
         public int Id { get; set; }
 
+        [AllowHtml]
+        [ScaffoldColumn(true)]
         public string Title { get; set; }
 
         public int VehicleModelId { get; set; }
 
         public int Year { get; set; }
 
+        [UIHint("Currency")]
         public decimal Price { get; set; }
 
         public int Power { get; set; }
@@ -26,14 +31,16 @@ namespace CarAdverts.Web.Models.Advert
         [Display(Name = "City")]
         public int CityId { get; set; }
 
+        [AllowHtml]
         public string Description { get; set; }
-        
+
         [DataType(DataType.DateTime)]
         public DateTime CreatedOn { get; set; }
         
         public string UserId { get; set; }
 
-        public string Url => $"/adverts/{this.Id}/{this.Title.ToLower().Replace(" ", "-")}";
+        //public string Url => $"/adverts/{this.Id}/{this.Title.ToLower().Replace(" ", "-")}";
+        public string Url => $"/adverts/{this.Id}";
 
         public int? FirstPictureId
         {

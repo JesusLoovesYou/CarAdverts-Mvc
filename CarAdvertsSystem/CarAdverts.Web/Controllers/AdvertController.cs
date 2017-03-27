@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using CarAdverts.Models;
 using CarAdverts.Web.Models.Advert;
-using Microsoft.AspNet.Identity;
 using CarAdverts.Services.Contracts;
 using PagedList;
 using Bytes2you.Validation;
@@ -17,13 +14,13 @@ namespace CarAdverts.Web.Controllers
     public class AdvertController : Controller
     {
         private const int ItemsPerPage = 2;
-        
+
         private readonly IAdvertService advertService;
 
         public AdvertController(IAdvertService advertService)
-        { 
+        {
             Guard.WhenArgument(advertService, nameof(advertService)).IsNull().Throw();
-            
+
             this.advertService = advertService;
         }
 
@@ -41,24 +38,24 @@ namespace CarAdverts.Web.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            
+
             try
             {
-                 var adverts = advertService.Search(
-                    model.VehicleModelId,
-                    model.CityId,
-                    model.MinYear,
-                    model.MaxYear,
-                    model.MinPrice,
-                    model.MaxPrice,
-                    model.MinPower,
-                    model.MaxPower,
-                    model.MinDistanceCoverage,
-                    model.MaxDistanceCoverage)
-                .OrderBy(a => a.CreatedOn)
-                .ThenBy(a => a.Id)
-                .ProjectTo<AdvertViewModel>()
-                .ToList();
+                var adverts = advertService.Search(
+                           model.VehicleModelId,
+                           model.CityId,
+                           model.MinYear,
+                           model.MaxYear,
+                           model.MinPrice,
+                           model.MaxPrice,
+                           model.MinPower,
+                           model.MaxPower,
+                           model.MinDistanceCoverage,
+                           model.MaxDistanceCoverage)
+                   .OrderBy(a => a.CreatedOn)
+                   .ThenBy(a => a.Id)
+                   .ProjectTo<AdvertViewModel>()
+                   .ToList();
 
                 return View(adverts.ToPagedList(page, ItemsPerPage));
             }

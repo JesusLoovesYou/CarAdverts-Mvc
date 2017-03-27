@@ -8,6 +8,7 @@ using System.Web.Routing;
 using CarAdverts.Models;
 using CarAdverts.Services.Contracts;
 using CarAdverts.Web.Areas.User.Controllers;
+using CarAdverts.Web.Areas.User.Models;
 using CarAdverts.Web.Models.Advert;
 using Moq;
 using NUnit.Framework;

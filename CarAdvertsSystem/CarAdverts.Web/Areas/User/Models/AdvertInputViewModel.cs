@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using CarAdverts.Web.Models;
 
-namespace CarAdverts.Web.Models.Advert
+namespace CarAdverts.Web.Areas.User.Models
 {
+    [Authorize]
     public class AdvertInputViewModel
     {
         [DataType(DataType.Text)]
@@ -24,7 +26,7 @@ namespace CarAdverts.Web.Models.Advert
         [Display(Name = "City")]
         public int CityId { get; set; }
         
-        [DataType(DataType.MultilineText)]
+        [UIHint("MultilineText")]
         [AllowHtml]
         public string Description { get; set; }
 

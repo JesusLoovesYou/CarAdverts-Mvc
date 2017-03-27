@@ -1,0 +1,4 @@
+﻿@if (this.User.Identity.IsAuthenticated)
+{
+    <li>@Html.ActionLink("Create Advert", "Create", "CRUDAdvert", new { area = "User" }, null)</li>
+}

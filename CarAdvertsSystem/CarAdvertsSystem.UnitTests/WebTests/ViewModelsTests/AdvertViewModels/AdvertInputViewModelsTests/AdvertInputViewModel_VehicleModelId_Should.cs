@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using CarAdverts.Web.Areas.User.Models;
 using CarAdverts.Web.Models.Advert;
 using NUnit;
 using NUnit.Framework;

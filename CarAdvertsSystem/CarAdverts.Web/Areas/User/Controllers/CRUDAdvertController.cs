@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Bytes2you.Validation;
 using CarAdverts.Models;
 using CarAdverts.Services.Contracts;
+using CarAdverts.Web.Areas.User.Models;
 using CarAdverts.Web.Models.Advert;
 using Microsoft.AspNet.Identity;
 

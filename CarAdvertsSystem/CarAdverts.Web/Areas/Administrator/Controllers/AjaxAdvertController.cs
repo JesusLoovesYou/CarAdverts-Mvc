@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace CarAdverts.Web.Areas.Administrator.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AjaxAdvertController : BaseController
     {
         private readonly IAdvertService advertService;
