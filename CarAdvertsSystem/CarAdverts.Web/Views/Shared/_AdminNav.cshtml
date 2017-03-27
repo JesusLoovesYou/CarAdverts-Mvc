@@ -1,6 +1,4 @@
 ﻿@if (this.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
-
-    <li>@Html.ActionLink("Test", "Index", "Test", new { area = "Administrator" }, null)</li>
     <li>@Html.ActionLink("Administrator", "Index", "AjaxAdvert", new { area = "Administrator" }, null)</li>
 }

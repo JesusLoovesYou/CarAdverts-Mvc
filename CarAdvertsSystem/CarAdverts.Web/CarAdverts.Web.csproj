@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44308</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -233,7 +233,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\AjaxAdvertController.cs" />
-    <Compile Include="Areas\Administrator\Controllers\TestController.cs" />
     <Compile Include="Areas\User\Controllers\CRUDAdvertController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="AutoMapping\IgnoreRequiredExtensions.cs" />
@@ -288,13 +287,12 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administrator\Views\web.config" />
     <Content Include="Areas\Administrator\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administrator\Views\Test\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\AjaxAdvert\Index.cshtml" />
     <Content Include="Areas\User\Views\web.config" />
     <Content Include="Areas\User\Views\_ViewStart.cshtml" />
     <Content Include="Areas\User\Views\CRUDAdvert\Create.cshtml" />
-    <None Include="Properties\PublishProfiles\car-adverts - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\car-adverts - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\car-adverts-mvc - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\car-adverts-mvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
